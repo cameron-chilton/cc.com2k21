@@ -3,29 +3,42 @@ $vin-blue: #5bb7db;
 $vin-green: #60b044;
 $vin-red: #ff0000;
 
+/* fonts */
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@800&display=swap');
+
 /* Styles */
 body {
-  font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  line-height: 1.4em;
   color: #4d4d4d;
-  min-width: 230px;
-  max-width: 550px;
   margin: 0 auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-font-smoothing: antialiased;
-  font-smoothing: antialiased;
-  font-weight: 300;
 }
 
-td {
-	padding: 12px;
+.main-container {
+  width: calc(100% - 3rem);
+  height: 0;
+  padding-bottom: 45%;
+  perspective: calc(100% - 3rem);
+  margin: 3rem auto;
+  border: 1px solid red;
+  text-align: center;
 }
 
-h2 {
-	color: $vin-blue;
+.name-first {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  font-size: 7.8rem;
+  font-family: 'Public Sans', sans-serif;
+  letter-spacing: -0.4rem;
+  transform: perspective(30.0rem) rotateY(-45deg);
+}
+.name-last {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  font-size: 7.8rem;
+  font-family: 'Public Sans', sans-serif;
+  letter-spacing: -0.4rem;
+  transform: perspective(30.0rem) rotateY(45deg);
 }
 
-.savings { color: $vin-green; }
-.loss { color: $vin-red; }
-input.small { width: 46px; }
-td.fuel-savings-label { width: 175px; }
+
