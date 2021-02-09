@@ -15,9 +15,10 @@ import { hot } from "react-hot-loader";
 
 class App extends React.Component {
   render() {
-    const activeStyle = { color: 'blue' };
+    //const activeStyle = { color: 'blue' };
     return (
       <div>
+        {/*
         <div>
           <NavLink exact to="/" activeStyle={activeStyle}>Home</NavLink>
           {' | '}
@@ -25,6 +26,7 @@ class App extends React.Component {
           {' | '}
           <NavLink to="/about" activeStyle={activeStyle}>About</NavLink>
         </div>
+        */}
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/fuel-savings" component={FuelSavingsPage} />

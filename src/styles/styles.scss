@@ -1,44 +1,313 @@
-/* Variables */
-$vin-blue: #5bb7db;
-$vin-green: #60b044;
-$vin-red: #ff0000;
+/* COLOR Variables */
+$litestBG: #f7f5f2;
+$liteBG: #edeae5;
+$bgShad: #bab1a4;
+$blue1: #a0cfea;
+$blue2: #034a6d;
+$yellow1: #fef9c7;
+$yellow2: #fce181;
+$briteGrn: #9fedd7;
+$darkGrn: #026670;
+$gray05: #f1f2f2;
+$gray10: #e6e7e8;
+$gray15: #dcddde;
+$gray20: #d1d3d4;
+$gray30: #bcbec0;
+$gray40: #a7a9ac;
+$gray50: #939598;
+$gray60: #808285;
+$gray65: #77787b;
+$gray70: #6d6e71;
+$gray75: #636466;
+$gray80: #58595b;
+$gray85: #4d4d4f;
+$gray90: #414042;
+$gray95: #333132;
+$gray100: #231f20;
 
 /* fonts */
-@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pragati+Narrow:wght@700&display=swap');
 
 /* Styles */
 body {
+  background-color: $liteBG;
+  background-image: radial-gradient(white 5%, $liteBG 60%);
   color: #4d4d4d;
   margin: 0 auto;
+  user-select: none;
 }
 
 .main-container {
-  width: calc(100% - 3rem);
-  height: 0;
-  padding-bottom: 45%;
-  perspective: calc(100% - 3rem);
-  margin: 3rem auto;
+  width: 98vw;
+  display: flex;
+  flex-direction: column;
+  min-height: 98vh;
+  margin: 0 auto;
   border: 1px solid red;
-  text-align: center;
+  /*background-image: url('../imgs/bg-grid2.png');*/
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: 0.4rem -0.8rem;
 }
 
-.name-first {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  font-size: 7.8rem;
-  font-family: 'Public Sans', sans-serif;
-  letter-spacing: -0.4rem;
-  transform: perspective(30.0rem) rotateY(-45deg);
-}
-.name-last {
-  position: absolute;
-  top: 50%;
-  right: 10%;
-  font-size: 7.8rem;
-  font-family: 'Public Sans', sans-serif;
-  letter-spacing: -0.4rem;
-  transform: perspective(30.0rem) rotateY(45deg);
+.left-front {
+	position: absolute;
+  z-index: 2;
+	width: 23.4rem;
+	height: 6rem;
+	top: 22.4rem;
+	left: 6.5rem;
+	overflow: hidden;
+	transform-origin: 32% 158%;
+  transform: perspective(5.5rem) rotateY(-10.0deg);
+
+  .left-front:after {
+    position: absolute;
+    content: ' ';
+    right: 0;
+    top: 0;
+    bottom: 0%;
+  }
+  .left-front-content {
+    position: absolute;
+    bottom: 0;
+    right: -48.7rem;
+    /*animation: scrollLF 200s linear 1.5s infinite;*/
+
+    .left-front-text {
+      color: $gray85;
+      font-size: 7.3rem;
+      line-height: 4.9rem;
+      font-family: 'Pragati Narrow', sans-serif;
+      letter-spacing: -0.5rem;
+      white-space: nowrap;
+      text-align: right;
+      transform: scale(.56,1);
+    }
+  }
+  @keyframes scrollLF {
+    0% { right: -48.7rem; }
+    100% { right: -145rem; }
+  }
+
 }
 
+.left-rear {
+	position: absolute;
+  z-index: 1;
+	width: 40rem;
+	height: 3.7rem;
+	top: 26.1rem;
+	left: 12.9rem;
+	overflow: hidden;
+	transform-origin: 32% 125%;
+  transform: perspective(9rem) rotateY(12deg);
+
+  .left-rear:after {
+    position: absolute;
+    content: ' ';
+    right: 0;
+    top: 0;
+    bottom: 0%;
+  }
+  .left-rear-content {
+    position: absolute;
+    bottom: 0;
+    right: -85rem;
+    /*animation: scrollLR 150s linear 1.5s infinite;*/
+
+    .left-rear-text {
+      color: $gray60;
+      font-size: 4.3rem;
+      line-height: 3.3rem;
+      font-family: 'Pragati Narrow', sans-serif;
+      letter-spacing: -0.24rem;
+      white-space: nowrap;
+      text-align: right;
+      transform: scale(-0.84, 1);
+    }
+  }
+  @keyframes scrollLR {
+    0% { right: -85rem; }
+    100% { right: -12.5rem; }
+  }
+
+}
+
+.right-front {
+	position: absolute;
+  z-index: 2;
+	width: 45.9rem;
+	height: 8.1rem;
+	top: 19.0rem;
+	left: 51.8rem;
+	overflow: hidden;
+	transform-origin: 32% 165%;
+  transform: perspective(8rem) rotateY(10deg);
+
+  .right-front:after {
+    position: absolute;
+    content: ' ';
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0%;
+  }
+  .right-front-content {
+    position: absolute;
+    bottom: 0;
+    right: -63.4rem;
+    /*animation: scrollRF 199s linear 1.5s infinite;*/
+
+    .right-front-text {
+      color: $gray75;
+      font-size: 10.0rem;
+      line-height: 6.56rem;
+      font-family: 'Pragati Narrow', sans-serif;
+      letter-spacing: -0.8rem;
+      white-space: nowrap;
+      text-align: right;
+      transform: scale(.66, 1);
+    }
+  }
+  @keyframes scrollRF {
+    0% { right: -63.6rem; }
+    100% { right: -211.6rem; }
+  }
+
+}
+
+.right-rear {
+	position: absolute;
+  z-index: 1;
+	width: 31.4rem;
+	height: 2.8rem;
+	top: 27.1rem;
+	left: 39.1rem;
+	overflow: hidden;
+	transform-origin: 40% 123%;
+  transform: perspective(9rem) rotateY(-12deg);
+
+  .right-rear:after {
+    position: absolute;
+    content: ' ';
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0%;
+  }
+  .right-rear-content {
+    position: absolute;
+    bottom: 0;
+    right: -80rem;
+    /*animation: scrollRR 140s linear 1.5s infinite;*/
+
+    .right-rear-text {
+      color: $gray60;
+      font-size: 3.4rem;
+      line-height: 2.5rem;
+      font-family: 'Pragati Narrow', sans-serif;
+      letter-spacing: -0.12rem;
+      white-space: nowrap;
+      transform: scale(-0.66, 1);
+    }
+  }
+  @keyframes scrollRR {
+    0% { right: -80rem; }
+    100% { right: -36rem; }
+  }
+
+}
+
+/* MAIN TEXT STYLES */
+.word {margin: 0 0.8rem;}
+
+.lf-3 {color: $gray85; animation: lf-3-an 8s infinite;}
+@keyframes lf-3-an {
+  0%   {color: $gray85;}
+  10%  {color: $gray85;}
+  20%  {color: $gray85;}
+  30%  {color: $gray85;}
+  40%  {color: $blue2;}
+  50%  {color: $blue2;}
+  60%  {color: $blue2;}
+  70%  {color: $blue2;}
+  80%  {color: $blue2;}
+  90%  {color: $blue2;}
+  100% {color: $gray85;}
+}
+
+.lf-4 {color: $gray85; animation: lf-4-an 13s infinite;}
+@keyframes lf-4-an {
+  0%   {color: $gray85;}
+  10%  {color: $gray85;}
+  20%  {color: $gray85;}
+  30%  {color: $gray75;}
+  40%  {color: $gray75;}
+  50%  {color: $gray75;}
+  60%  {color: $gray85;}
+  70%  {color: $gray85;}
+  80%  {color: $gray85;}
+  90%  {color: $gray85;}
+  100% {color: $gray85;}
+}
+
+.lf-5 {color: $gray85; animation: lf-5-an 16s infinite;}
+@keyframes lf-5-an {
+  0%   {color: $gray85;}
+  10%  {color: $gray85;}
+  20%  {color: $gray85;}
+  30%  {color: $yellow2;}
+  40%  {color: $yellow2;}
+  50%  {color: $yellow2;}
+  60%  {color: $yellow2;}
+  70%  {color: $yellow2;}
+  80%  {color: $gray85;}
+  90%  {color: $gray85;}
+  100% {color: $gray85;}
+}
+
+.lf-6 {color: $gray85; animation: lf-6-an 9s infinite;}
+@keyframes lf-6-an {
+  0%   {color: $gray85;}
+  10%  {color: $gray85;}
+  20%  {color: $gray85;}
+  30%  {color: $gray80;}
+  40%  {color: $gray80;}
+  50%  {color: $gray80;}
+  60%  {color: $gray80;}
+  70%  {color: $gray85;}
+  80%  {color: $gray85;}
+  90%  {color: $gray85;}
+  100% {color: $gray85;}
+}
+
+.lf-7 {color: $gray85; animation: lf-7-an 15s infinite;}
+@keyframes lf-7-an {
+  0%   {color: $gray85;}
+  10%  {color: $gray85;}
+  20%  {color: $darkGrn;}
+  30%  {color: $darkGrn;}
+  40%  {color: $darkGrn;}
+  50%  {color: $darkGrn;}
+  60%  {color: $darkGrn;}
+  70%  {color: $darkGrn;}
+  80%  {color: $gray85;}
+  90%  {color: $gray85;}
+  100% {color: $gray85;}
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0.0;}
+  10% {opacity: 0.1;}
+  20% {opacity: 0.2;}
+  30% {opacity: 0.3;}
+  40% {opacity: 0.4;}
+  50% {opacity: 0.5;}
+  60% {opacity: 0.6;}
+  70% {opacity: 0.7;}
+  80% {opacity: 0.8;}
+  90% {opacity: 0.9;}
+  100% {opacity: 1.0;}
+}
 
