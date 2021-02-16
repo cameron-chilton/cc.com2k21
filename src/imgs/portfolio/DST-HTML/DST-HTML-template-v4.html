@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html lang="en"><!--<![endif]-->
+<head>
+    <!-- Basic Page Needs
+================================================== -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- Mobile Specific Metas
+================================================== -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Title and meta description
+================================================== -->
+ 
+<title>Decision Support Tool (DST)</title>
+
+<link rel="canonical" href="https://designsystem.digital.gov/page-templates/docs/">
+<meta property="og:url" content="https://designsystem.digital.gov/page-templates/docs/">
+
+<!-- Favicons
+================================================== -->
+  <!-- 128x128 -->
+  <link rel="shortcut icon" type="image/ico" href="assets/uswds-1.6.9/img/design/icons/favicon.ico">
+  <link rel="icon" type="image/png" href="assets/uswds-1.6.9/img/favicons/favicon.png">
+
+  <!-- 192x192, as recommended for Android
+  http://updates.html5rocks.com/2014/11/Support-for-theme-color-in-Chrome-39-for-Android
+  -->
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicons/favicon-192.png">
+
+  <!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+  <link rel="apple-touch-icon-precomposed" href="/assets/img/favicons/favicon-57.png">
+  <!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/img/favicons/favicon-72.png">
+  <!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/img/favicons/favicon-114.png">
+  <!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/favicons/favicon-144.png">
+
+<!-- CSS
+================================================== -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+	<link rel="stylesheet" href="assets/uswds-1.6.9/css/uswds.css">
+	<link rel="stylesheet" href="assets/uswds-1.6.9/css/uswds-ADDITIONAL.css">
+</head>
+  
+<body class="">
+
+<a class="usa-skipnav" href="#main-content">Skip to main content</a>
+
+<main class="usa-grid-full" id="main-content">
+
+	<div class="usa-grid">
+		
+		<!-- ################ CONSULT ################## -->
+        <div class="usa-width-two-thirds">
+
+			<div class="dst-box">
+				<div class="dst-box-header">
+                    <h2><span class="dst-bold">Consult:<span class="dst-consult-name">Advanced Heart Failure Slc</span></span></h2>
+                </div>
+				<div class="dst-box-content">
+        
+                    <!-- consult row 1 -->
+					<div class="usa-grid-full">
+                        <div class="usa-width-one-fourth">
+                            <label class="dst-bold-label">Name</label>
+                            <div class="dst-info">DSTPatient, One A</div>
+							<span id="urgent-elig" class="dst-walkin-eligible"><div id="is-urgent-elig"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 384 512" class="dst-icon-greencheck" height="1em" width="1em"><path d="M336 64h-80c0-35.3-28.7-64-64-64s-64 28.7-64 64H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48zM192 40c13.3 0 24 10.7 24 24s-10.7 24-24 24-24-10.7-24-24 10.7-24 24-24zm121.2 231.8l-143 141.8c-4.7 4.7-12.3 4.6-17-.1l-82.6-83.3c-4.7-4.7-4.6-12.3.1-17L99.1 285c4.7-4.7 12.3-4.6 17 .1l46 46.4 106-105.2c4.7-4.7 12.3-4.6 17 .1l28.2 28.4c4.7 4.8 4.6 12.3-.1 17z"></path></svg><span class="">Urgent Care Eligible</span></div></span>
+                        </div>
+                        <div class="usa-width-one-fourth">
+                            <label class="dst-bold-label">Address</label>
+                            <div class="dst-info">1234 Example Rd.<br>West Branch, CO 97734</div>
+                        </div>
+                        <div class="usa-width-one-fourth">
+                            <label class="dst-bold-label">Date of Birth</label>
+                            <div class="dst-info">Jan 18, 1938 (80)</div>
+                        </div>
+                        <div class="usa-width-one-fourth">
+                            <label class="dst-bold-label">SSN</label>
+                            <div class="dst-info">***-**-0000</div>
+                        </div>  
+                    </div>
+
+                    <hr class="dst-hr">
+
+                    <!-- consult row 2, clinical service -->
+					<div class="usa-grid-full">
+                        <div class="usa-width-one-half">
+                            <label class="dst-bold-label">Clinical Service <span class="dst-care-type">(Specialty Care)</span></label>
+                            <div class="dst-info">
+                                Cardiology
+                            </div>
+                        </div>
+                        <div class="usa-width-one-half">
+                            <label class="dst-bold-label">Urgency</label>
+                            <div class="dst-info dst-field-bg">
+                                <span class="dst-inline-block">
+                                    <input id="urgency-routine" type="radio" name="urgency-radio" value="urgency-routine" checked="checked">
+                                    <label for="urgency-routine" class="dst-radio-label">Routine</label>
+                                </span>
+                                <span class="dst-inline-block">
+                                    <input id="urgency-stat" type="radio" name="urgency-radio" value="urgency-stat">
+                                    <label for="urgency-stat" class="dst-radio-label">Stat</label>
+                                </span>
+                                <span class="dst-inline-block">
+                                    <input id="urgency-special-inst" type="radio" name="urgency-radio" value="urgency-special-inst">
+                                    <label for="urgency-special-inst" class="dst-radio-label">Special Instructions</label>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- consult row 3 -->
+					<div class="usa-grid-full dst-row-space">
+                        <div class="usa-width-one-fourth">
+                            <label class="dst-bold-label">Drive Time Std</label>
+                            <div class="dst-info">1 hr 00 min</div>
+                        </div>
+                        <div class="usa-width-one-fourth">
+                            <label class="dst-bold-label">Wait Time Std</label>
+                            <div class="dst-info">28 days</div>
+                        </div>
+                        <div class="usa-width-one-fourth">
+                            <label class="dst-bold-label">CID/No Earlier Than Date</label>
+                            <div class="dst-info dst-field-bg">
+                                <input id="input-type-text" name="input-type-text" type="text" value="01/21/2019" class="dst-datepicker">
+                            </div>
+                        </div>
+                        <div class="usa-width-one-fourth">
+                            <label class="dst-bold-label">No Later Than Date</label>
+                            <div class="dst-info dst-NLTD-readonly">02/18/2019</div>
+                        </div>
+                    </div>
+
+
+
+				</div>
+            </div>
+            
+            <div class="dst-box">
+                <div class="dst-box-header">
+                    <h2>VA Facilities:<span class="dst-consult-name">Cardiology</span></h2>
+                </div>
+                <div class="dst-box-content">
+                    <div class="usa-grid-full dst-result-box">
+                        <div class="usa-width-one-whole">
+							<div class="dst-facility-message">VHA facilities that MAY provide clinical services related to this consult are listed below.</div>
+                            <table class="usa-table-borderless dst-table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Facility Name</th>
+                                        <th scope="col">Drive Time</th>
+                                        <th scope="col">Average Wait Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">VA Western Colorado HCS</th>
+                                        <td class="dst-drive-time-td">15 min <span class="dst-distance">(12 mi)</span></td>
+                                        <td class="dst-wait-time-td">15 days</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">VA Eastern Colorado Health Care System (ECHCS)</th>
+                                        <td class="dst-drive-time-td">45 min <span class="dst-distance">(27 mi)</span></td>
+                                        <td class="dst-wait-time-td">18 days</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Golden Outpatient Clinic</th>
+                                        <td class="dst-drive-time-td">50 min <span class="dst-distance">(83 mi)</span></td>
+                                        <td class="dst-wait-time-td">35 days</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Glenwood Springs Veterans Community Clinic</th>
+                                        <td class="dst-drive-time-td">1 hr 50 min <span class="dst-distance">(122 mi)</span></td>
+                                        <td class="dst-wait-time-td">35 days</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Veterans Community Clinic</th>
+                                        <td class="dst-drive-time-td">1 hr 50 min <span class="dst-distance">(122 mi)</span></td>
+                                        <td class="dst-wait-time-td">35 days</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Springs Veterans Clinic</th>
+                                        <td class="dst-drive-time-td">1 hr 50 min <span class="dst-distance">(122 mi)</span></td>
+                                        <td class="dst-wait-time-td">35 days</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+		</div>
+
+		<!-- ############# COMM. CARE ############## -->
+        <div class="usa-width-one-third">
+
+			<div class="dst-box">
+				<div class="dst-box-header">
+                    <h2>Community Care</h2>
+                </div>
+				<div class="dst-box-content dst-cc-container">
+                        <div class="usa-grid-full">
+                            <div class="usa-grid-full">
+								<div class="usa-alert usa-alert-success dst-alert" role="alert">
+										<div class="usa-alert-body dst-alert-body"><span>Community Care Eligible based on</span></div>
+								</div>
+                                <div>
+                                    <div class="dst-elig-criteria"><i class="fas fa-check-circle dst-elig-check"></i>Grandfathered</div>
+                                </div>
+                                <div class="dst-field-bg">
+                                    <div id="elig-bmiOfVet" class="dst-field-bg dst-elig-orideBox"><span class="dst-bmi-check-circle"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" class="dst-blank-square" height="1em" width="1em"><path d="M512 512H0V0h512v512z"></path></svg></span><label for="best-med-int-vet" class="dst-bmi-label">Best Medical Interest of Veteran</label><div class="dst-field-bg"><select id="bmi-options"><option id="bmi-0" value="0">--- Select Justification ---</option><option id="bmi-1" value="1">Nature or simplicity of service</option><option id="bmi-2" value="2">Frequency of service</option><option id="bmi-3" value="3">Need for an attendant</option><option id="bmi-5" value="5">Potential for improved continuity of care</option><option id="bmi-6" value="6">Potential for improved quality of care</option><option id="bmi-7" value="7">Timeliness of available appointments</option><option id="bmi-4" value="4">Other</option></select></div><div id="dst-explanation-textarea" hidden=""><label for="dst-best-med-reason" id="dst-best-med-label" class="dst-medInt-label">Explanation <span class="dst-required">(required)</span></label><textarea id="dst-best-med-reason" name="bmiReason" aria-labelledby="dst-best-med-label" aria-label="Enter explanation for best medical interest of Veteran." placeholder="Enter explanation..."></textarea></div></div>
+                                </div>
+
+                                <div class="dst-row-space">
+                                   <label class="dst-bold-label">Veteran Community Care Choice</label>
+                                    <div class="dst-field-bg">
+                                        <span class="dst-inline-block">
+                                            <input id="vet-cc-choice-np" type="radio" name="vet-cc-choice" value="vet-cc-choice-np">
+                                            <label for="vet-cc-choice-np" class="dst-radio-label">Vet Not Present</label>
+                                        </span>
+                                        <span class="dst-inline-block">
+                                            <input id="vet-cc-choice-in" type="radio" name="vet-cc-choice" value="vet-cc-choice-in">
+                                            <label for="vet-cc-choice-in" class="dst-radio-label">Opt-In</label>
+                                        </span>
+                                        <span class="dst-inline-block">
+                                            <input id="vet-cc-choice-out" type="radio" name="vet-cc-choice" value="vet-cc-choice-out">
+                                            <label for="vet-cc-choice-out" class="dst-radio-label">Opt-Out</label>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="dst-row-space">
+                                   <label class="dst-bold-label">SEOC</label>
+                                    <div class="dst-field-bg">
+                                        <span class="dst-inline-block">
+                                            <select name="options" id="options" class="dst-seoc-select">
+                                                <option>--</option>
+                                                <option>SEOC 1</option>
+                                            </select>
+                                        </span>
+                                        <span class="dst-inline-block">
+                                            <button class="usa-button dst-button-small">View SEOC</button>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="dst-row-space">
+                                    <label class="dst-bold-label">Community Care Consult Name</label>
+                                    <div class="dst-info">--</div>
+                                </div>
+
+                                <div class="dst-row-space">
+                                    <label class="dst-bold-label">Consult Type</label>
+                                        <div class="dst-field-bg">
+                                            <span class="dst-inline-block">
+                                                <input id="consult-type-va" type="radio" name="consult-type" value="consult-type-va">
+                                                <label for="consult-type-va" class="dst-radio-label">VA</label>
+                                            </span>
+                                            <span class="dst-inline-block">
+                                                <input id="consult-type-cc" type="radio" name="consult-type" value="consult-type-cc">
+                                                <label for="consult-type-cc" class="dst-radio-label">Community Care</label>
+                                            </span>
+                                        </div>
+                                    </div>
+                                
+                            </div>
+                        </div>
+				</div>
+            </div>
+
+		</div>
+
+	</div>
+
+	
+	<div class="usa-grid dst-text-center">
+		<button class="usa-button-secondary">Cancel</button>
+		<button class="usa-button">Save</button>
+	</div>
+
+	
+</main>
+
+
+<script src="assets/js/uswds.js"></script>
+
+</body>
+
+</html>
