@@ -33,6 +33,7 @@ $gray100: #231f20;
 body {
   background-color: $liteBG;
   background-image: radial-gradient(white 5%, $liteBG 60%);
+  background-repeat: no-repeat;
   color: #4d4d4f;
   margin: 0 auto;
   user-select: none;
@@ -44,11 +45,6 @@ body {
   position: relative;
   min-height: 98vh;
   margin: 0 auto;
-  /*border: 1px solid red;*/
-  /*background-image: url('../imgs/bg-grid2.png');*/
-  background-repeat: no-repeat;
-  background-size: 100%;
-  background-position: -2.5rem -0.6rem;
 }
 
 .nameTitle {

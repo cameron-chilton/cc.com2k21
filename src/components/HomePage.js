@@ -116,7 +116,7 @@ class HomePage extends Component {
               <a href="https://github.com/cameron-chilton" className="main-icons" target="_blank" rel="noopener noreferrer" title="Visit GitHub Profile">
                 <img className="" src="../imgs/github.svg" />
               </a>
-              <a href="../imgs/Cameron-Chilton-Resume2021.pdf" className="main-icons" target="_blank" rel="noopener noreferrer" title="Download Resume">
+              <a href="../imgs/CameronChilton-UX-Architect-UI-Developer-2021.docx" className="main-icons" title="Download Resume" download>
                 <img className="" src="../imgs/msWord.svg" />
               </a>
             </div>
