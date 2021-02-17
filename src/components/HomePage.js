@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import WorkL1 from './WorkL1';
 
 class HomePage extends Component {
 
@@ -78,21 +79,21 @@ class HomePage extends Component {
 
   // RIGHT FRONT
   getClassNum1 = () => { let y = this.getClassNum(1,16); this.setState({rfCnum1: y}); }
-  getClassNum1 = () => { let y = this.getClassNum(1,16); this.setState({rfCnum2: y}); }
-  getClassNum1 = () => { let y = this.getClassNum(1,16); this.setState({rfCnum3: y}); }
-  getClassNum1 = () => { let y = this.getClassNum(1,16); this.setState({rfCnum4: y}); }
-  getClassNum1 = () => { let y = this.getClassNum(1,16); this.setState({rfCnum5: y}); }
-  getClassNum1 = () => { let y = this.getClassNum(1,16); this.setState({rfCnum6: y}); }
-  getClassNum1 = () => { let y = this.getClassNum(1,16); this.setState({rfCnum7: y}); }
-  getClassNum1 = () => { let y = this.getClassNum(1,16); this.setState({rfCnum8: y}); }
-  getClassNum1 = () => { let y = this.getClassNum(1,16); this.setState({rfCnum9: y}); }
-  getClassNum1 = () => { let y = this.getClassNum(1,16); this.setState({rfCnum10: y}); }
-  getClassNum1 = () => { let y = this.getClassNum(1,16); this.setState({rfCnum11: y}); }
-  getClassNum1 = () => { let y = this.getClassNum(1,16); this.setState({rfCnum12: y}); }
-  getClassNum1 = () => { let y = this.getClassNum(1,16); this.setState({rfCnum13: y}); }
-  getClassNum1 = () => { let y = this.getClassNum(1,16); this.setState({rfCnum14: y}); }
-  getClassNum1 = () => { let y = this.getClassNum(1,16); this.setState({rfCnum15: y}); }
-  getClassNum1 = () => { let y = this.getClassNum(1,16); this.setState({rfCnum16: y}); }
+  getClassNum2 = () => { let y = this.getClassNum(1,16); this.setState({rfCnum2: y}); }
+  getClassNum3 = () => { let y = this.getClassNum(1,16); this.setState({rfCnum3: y}); }
+  getClassNum4 = () => { let y = this.getClassNum(1,16); this.setState({rfCnum4: y}); }
+  getClassNum5 = () => { let y = this.getClassNum(1,16); this.setState({rfCnum5: y}); }
+  getClassNum6 = () => { let y = this.getClassNum(1,16); this.setState({rfCnum6: y}); }
+  getClassNum7 = () => { let y = this.getClassNum(1,16); this.setState({rfCnum7: y}); }
+  getClassNum8 = () => { let y = this.getClassNum(1,16); this.setState({rfCnum8: y}); }
+  getClassNum9 = () => { let y = this.getClassNum(1,16); this.setState({rfCnum9: y}); }
+  getClassNum10 = () => { let y = this.getClassNum(1,16); this.setState({rfCnum10: y}); }
+  getClassNum11 = () => { let y = this.getClassNum(1,16); this.setState({rfCnum11: y}); }
+  getClassNum12 = () => { let y = this.getClassNum(1,16); this.setState({rfCnum12: y}); }
+  getClassNum13 = () => { let y = this.getClassNum(1,16); this.setState({rfCnum13: y}); }
+  getClassNum14 = () => { let y = this.getClassNum(1,16); this.setState({rfCnum14: y}); }
+  getClassNum15 = () => { let y = this.getClassNum(1,16); this.setState({rfCnum15: y}); }
+  getClassNum16 = () => { let y = this.getClassNum(1,16); this.setState({rfCnum16: y}); }
 
   getClassNum = (min, max) => {
     let x = Math.random() * (max - min) + min;
@@ -111,6 +112,12 @@ class HomePage extends Component {
             <div>
               <a href="https://www.linkedin.com/in/cameronchilton/" className="main-icons" target="_blank" rel="noopener noreferrer" title="Visit LinkedIn Profile">
                 <img className="" src="../imgs/linkedin.svg" />
+              </a>
+              <a href="https://github.com/cameron-chilton" className="main-icons" target="_blank" rel="noopener noreferrer" title="Visit GitHub Profile">
+                <img className="" src="../imgs/github.svg" />
+              </a>
+              <a href="../imgs/Cameron-Chilton-Resume2021.pdf" className="main-icons" target="_blank" rel="noopener noreferrer" title="Download Resume">
+                <img className="" src="../imgs/msWord.svg" />
               </a>
             </div>
           </div>
@@ -361,10 +368,7 @@ class HomePage extends Component {
             </div>
           </div>
 
-          <div className="workL1">
-            <div className="contentL1">
-            </div>
-          </div>
+          <WorkL1 />
 
           <div className="workL2">
             <div className="contentL2">
