@@ -31,6 +31,7 @@ $gray100: #231f20;
 
 /* Styles */
 body {
+  height: 100vh;
   background-color: $liteBG;
   background-image: radial-gradient(white 5%, $liteBG 60%);
   background-repeat: no-repeat;

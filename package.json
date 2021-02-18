@@ -1,7 +1,7 @@
 {
-  "name": "react-slingshot",
-  "version": "7.0.1",
-  "description": "Starter kit for creating apps with React and Redux",
+  "name": "cameron-chilton-portfolio-site-2021",
+  "version": "1.0.1",
+  "description": "Portfolio website for UI/UX Designer/Developer Cameron Chilton",
   "engines": {
     "node": ">=8",
     "npm": ">=3"
@@ -29,7 +29,7 @@
     "open:cover": "npm run test:cover && open-cli ./coverage/lcov-report/index.html",
     "analyze-bundle": "babel-node ./tools/analyzeBundle.js"
   },
-  "author": "Cory House",
+  "author": "Cameron Chilton",
   "license": "MIT",
   "dependencies": {
     "@hot-loader/react-dom": "16.10.2",
@@ -120,7 +120,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/coryhouse/react-slingshot"
+    "url": "https://github.com/cameron-chilton/cc.com2K21"
   },
   "jest": {
     "moduleNameMapper": {
