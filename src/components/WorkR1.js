@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {func} from 'prop-types';
 
-class WorkL1 extends Component {
+class WorkR1 extends Component {
 
   constructor() {
     super();
@@ -38,7 +38,7 @@ class WorkL1 extends Component {
         .then(response => response.json())
         .then(data => this.setState({work1data: data}));
         this.setState({newSampleUp: true});
-    }, 26000);
+    }, 20000);
 
   }
 
@@ -58,8 +58,8 @@ class WorkL1 extends Component {
   render() {
 
     return (
-      <div className="workL1">
-        <div className="contentL1">
+      <div className="workR1">
+        <div className="contentR1">
           {this.state.work1img && <img src={this.state.work1img} onClick={ () => {this.props.clickSample(this.state.work1Info);} } />}
         </div>
       </div>
@@ -69,8 +69,8 @@ class WorkL1 extends Component {
 
 }
 
-WorkL1.propTypes = {
+WorkR1.propTypes = {
   clickSample: func,
 };
 
-export default WorkL1;
+export default WorkR1;

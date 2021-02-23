@@ -1,5 +1,10 @@
 import React, {Component} from 'react';
 import WorkL1 from './WorkL1';
+import WorkL2 from './WorkL2';
+import WorkR1 from './WorkR1';
+import WorkR2 from './WorkR2';
+import WorkInfo from './WorkInfo';
+import {string} from 'prop-types';
 
 class HomePage extends Component {
 
@@ -12,6 +17,13 @@ class HomePage extends Component {
       // RIGHT FRONT
       rfCnum1: '1',  rfCnum2: '2', rfCnum3: '3', rfCnum4: '4', rfCnum5: '5', rfCnum6: '6', rfCnum7: '7', rfCnum8: '8', rfCnum9: '9',
       rfCnum10: '10', rfCnum11: '11', rfCnum12: '12', rfCnum13: '13', rfCnum14: '14', rfCnum15: '15', rfCnum16: '16',
+      // WORK INFO BOX
+      workTitle: '',
+      workImg: '',
+      workDesc: '',
+      workTech: '',
+      workUrl: '',
+      workInst: '',
     };
   }
 
@@ -55,10 +67,6 @@ class HomePage extends Component {
 
   }
 
-  componentDidUpdate() {
-    //console.log('intervalVal: ' + this.state.intervalVal);
-  }
-
   // LEFT FRONT
   getClassNum49 = () => { let y = this.getClassNum(1,16); this.setState({lfCnum49: y}); }
   getClassNum50 = () => { let y = this.getClassNum(1,16); this.setState({lfCnum50: y}); }
@@ -99,6 +107,16 @@ class HomePage extends Component {
     let x = Math.random() * (max - min) + min;
     let y =  Math.round(x);
     return y;
+  }
+
+  clickSample = (info) => {
+    this.setState({workTitle: info.title});
+    this.setState({workImg: info.img_url});
+    this.setState({workDesc: info.desc});
+    this.setState({workTech: info.tech_used});
+    this.setState({workUrl: info.res_url});
+    this.setState({workInst: info.sample_inst});
+
   }
 
   render() {
@@ -368,27 +386,36 @@ class HomePage extends Component {
             </div>
           </div>
 
-          <WorkL1 />
+          <WorkL1 clickSample={this.clickSample} />
 
-          <div className="workL2">
-            <div className="contentL2">
-            </div>
-          </div>
+          <WorkL2 clickSample={this.clickSample} />
 
-          <div className="workR1">
-            <div className="contentR1">
-            </div>
-          </div>
+          <WorkR1 clickSample={this.clickSample} />
 
-          <div className="workR2">
-            <div className="contentR2">
-            </div>
-          </div>
+          <WorkR2 clickSample={this.clickSample} />
+
+          <WorkInfo
+            workTitle={this.state.workTitle}
+            workImg={this.state.workImg}
+            workDesc={this.state.workDesc}
+            workTech={this.state.workTech}
+            workUrl={this.state.workUrl}
+            workInst={this.state.workInst}
+          />
 
         </div>
       </>
     );
   }
 }
+
+HomePage.propTypes = {
+  workTitle: string,
+  workImg: string,
+  workDesc: string,
+  workTech: string,
+  workUrl: string,
+  workInst: string,
+};
 
 export default HomePage;

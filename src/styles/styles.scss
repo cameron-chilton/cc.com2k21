@@ -3,7 +3,9 @@ $litestBG: #f7f5f2;
 $liteBG: #edeae5;
 $bgShad: #c6b044;
 $blue1: #a0cfea;
+$blueHilite: #7ac9f6;
 $blue2: #07688e;
+$yellowLight: #fefbe2;
 $yellow1: #fef9c7;
 $yellow2: #fce181;
 $briteGrn: #9fedd7;
@@ -28,6 +30,9 @@ $gray100: #231f20;
 
 /* fonts */
 @import url('https://fonts.googleapis.com/css2?family=Pragati+Narrow:wght@400;700&display=swap');
+
+/* global settings */
+a, div, html, body, span {padding: 0; margin: 0;}
 
 /* Styles */
 body {
@@ -54,8 +59,8 @@ body {
   left: 2.5rem;
   z-index: 99;
 
-  h1 {font-weight: 700; font-size: 2.1em; line-height: 2.1rem; letter-spacing: 0.09rem; margin: 0; text-shadow: 0px 0px 8px white; color: $gray75;}
-  h2 {font-weight: 400; font-size: 1.2rem; line-height: 1.6rem; letter-spacing: 0.15rem; margin: 0 0 0 0.1rem; text-shadow: 0px 0px 8px white; color: $gray60;}
+  h1 {font-weight: 700; font-size: 2.1em; line-height: 2.1rem; letter-spacing: 0.09rem; margin: 0; text-shadow: -3px 3px 4px $yellowLight; color: $gray75;}
+  h2 {font-weight: 400; font-size: 1.2rem; line-height: 1.6rem; letter-spacing: 0.15rem; margin: 0 0 0 0.1rem; text-shadow: -2px 2px 4px $yellowLight; color: $gray60;}
   .main-icons {margin: 0.2rem 1.3rem 0 0.2rem; display: inline-block;}
   .main-icons img {width: 21px; height: 21px;}
 }
@@ -82,7 +87,7 @@ body {
     position: absolute;
     bottom: 0;
     right: -48.7rem;
-    animation: scrollLF 200s linear 1.5s infinite;
+    animation: scrollLF 202s linear 1.5s infinite;
 
     .left-front-text {
       color: $gray85;
@@ -229,26 +234,76 @@ body {
 
 }
 
-/* fade in/out for item transitions */
-@keyframes workFadeIO {
-  0% {opacity: 0.0;}
-  3% {opacity: 0.1;}
-  6% {opacity: 0.6;}
-  8% {opacity: 1.0;}
-  10% {opacity: 1.0;}
-  20% {opacity: 1.0;}
-  30% {opacity: 1.0;}
-  40% {opacity: 1.0;}
-  50% {opacity: 1.0;}
-  60% {opacity: 1.0;}
-  70% {opacity: 1.0;}
-  80% {opacity: 1.0;}
-  90% {opacity: 1.0;}
-  93% {opacity: 1.0;}
-  96% {opacity: 0.6;}
-  98% {opacity: 0.1;}
-  100% {opacity: 0.0;}
+.workLink {
+  position: absolute;
+  bottom: 4.24rem;
+  right: 15.60rem;
+  z-index: 999;
+
+  .workButton {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08rem;
+    color: $blue2;
+    font-family: 'Pragati Narrow', sans-serif;
+    background-color: $blue1;
+    transition: box-shadow 0.1s ease, background-color 0.1s ease;
+    box-shadow: -1px 1px 3px $gray20;
+    border-radius: 3px;
+    border: 1px solid $gray40;
+    padding: 0 0.24rem;
+    cursor: pointer;
+  }
+
+  .workButton:hover {
+    box-shadow: -1px 1px 3px $gray40;
+    background-color: $blueHilite;
+  }
 }
+
+.workText {
+  position: absolute;
+  width: 30rem;
+  bottom: 0.90rem;
+  text-align: right;
+  right: 15.60rem;
+  z-index: 999;
+  text-transform: uppercase;
+
+  .workTitle {font-weight: 700; font-size: 0.84rem; letter-spacing: 0.060rem; color: $gray70; line-height: 1.02rem;}
+  .workDesc {font-size: 0.72rem; letter-spacing: 0.060rem; color: $gray60; line-height: 1.08rem;}
+  .workTech {font-size: 0.68rem; letter-spacing: 0.060rem; color: $gray50; line-height: 0.84rem;}
+
+}
+
+.workInfo {
+  position: absolute;
+  right: 0.96rem;
+  bottom: 0.96rem;
+  width: 14rem;
+  z-index: 999;
+
+  .posDiv {
+    position: relative;
+    width: 14rem;
+    height: 14rem;
+
+    .workImg img {
+      max-width: 100%;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 14rem;
+      height: 14rem;
+      box-shadow: -1px 1px 4px $gray30;
+      border: 1px solid $gray30;
+    }
+  }
+
+
+}
+
+/* work sample Left 1 */
 
 .workL1 {
   position: absolute;
@@ -258,7 +313,6 @@ body {
 	top: 0;
 	left: 6.7rem;
 	overflow: hidden;
-  animation: workFadeIO 16s linear infinite alternate;
 
   .contentL1 {
     width: 16rem;
@@ -270,20 +324,29 @@ body {
     background: $gray05;
     overflow: hidden;
     border: 1px solid $gray20;
-    box-shadow: -3px 3px 6px $gray20;
+    transition: box-shadow 0.3s ease;
+    box-shadow: -3px 3px 6px $gray15;
     cursor: pointer;
 
-      img {max-width: 100%;}
+      img {max-width: 100%; min-width: 16rem;}
 
       @keyframes workMoveL1 {
         0% {bottom: 0.8rem; transform: perspective(39rem) rotateY(24deg); transform-origin: -24% -19%; opacity: 0; }
-        5% {opacity: 0.5;}
+        3% {opacity: 0.1;}
+        6% {opacity: 0.6;}
+        8% {opacity: 1.0;}
         10% {opacity: 1.0;}
         90% {opacity: 1.0;}
-        95% {opacity: 0.5;}
+        93% {opacity: 1.0;}
+        95% {opacity: 0.0;}
         100% {bottom: 35rem; transform: perspective(8rem) rotateY(6deg); transform-origin: 30% 200%; opacity: 0;}
     }
   }
+
+  .contentL1:hover {
+    box-shadow: -3px 3px 6px $yellowLight;
+  }
+
 }
 
 .workL2 {
@@ -302,17 +365,30 @@ body {
     animation: workMoveL2 19s linear 1.7s infinite;
     height: 11rem;
     opacity: 0;
-    background: #ccc;
     top: 4.2rem;
+    background: $gray05;
+    overflow: hidden;
+    border: 1px solid $gray20;
+    transition: box-shadow 0.3s ease;
+    box-shadow: 3px 3px 4px $gray15;
+    cursor: pointer;
+
+    img {max-width: 100%; min-width: 16rem;}
 
     @keyframes workMoveL2 {
       0% {top: 4.2rem; transform: perspective(16rem) rotateY(-19deg); transform-origin: 10% 230%; opacity: 0; }
-      5% {opacity: 0.5;}
+      3% {opacity: 0.1;}
+      6% {opacity: 0.6;}
+      8% {opacity: 1.0;}
       10% {opacity: 1.0;}
       90% {opacity: 1.0;}
-      95% {opacity: 0.5;}
+      93% {opacity: 1.0;}
+      95% {opacity: 0.0;}
       100% {top: 33.3rem; transform: perspective(12rem) rotateY(-12deg); transform-origin: 40% 0%; opacity: 0; }
     }
+  }
+  .contentL2:hover {
+    box-shadow: 3px 3px 4px $yellowLight;
   }
 }
 
@@ -324,24 +400,36 @@ body {
 	top: 0;
 	left: 44.5rem;
 	overflow: hidden;
-  /*border: 1px solid blue;*/
 
   .contentR1 {
     left: 1.2rem;
     width: 11rem;
     position: absolute;
     animation: workMoveR1 20s linear 1.2s infinite;
-    background-color: #ccc;
-    /*border: 1px solid blue;*/
+    opacity: 0;
+    background: $gray05;
+    overflow: hidden;
+    border: 1px solid $gray20;
+    transition: box-shadow 0.3s ease;
+    box-shadow: -3px 3px 6px $gray15;
+    cursor: pointer;
+
+    img {max-width: 100%; min-width: 16rem;}
 
     @keyframes workMoveR1 {
       0% { bottom: 0.8rem; height: 15.2rem; transform: perspective(32rem) rotateY(24deg);transform-origin: -30% -2%; opacity: 0; }
-      5% {opacity: 0.5;}
+      3% {opacity: 0.1;}
+      6% {opacity: 0.6;}
+      8% {opacity: 1.0;}
       10% {opacity: 1.0;}
       90% {opacity: 1.0;}
-      95% {opacity: 0.5;}
+      93% {opacity: 1.0;}
+      95% {opacity: 0.0;}
       100% { bottom: 35.5rem; height: 11rem; transform: perspective(10.2rem) rotateY(11.3deg); transform-origin: 28% 240%; opacity: 0; }
     }
+  }
+  .contentR1:hover {
+    box-shadow: -3px 3px 6px $yellowLight;
   }
 }
 
@@ -362,16 +450,29 @@ body {
     top: 3rem;
     height: 11rem;
     opacity: 0;
-    background-color: #ccc;
+    background: $gray05;
+    overflow: hidden;
+    border: 1px solid $gray20;
+    transition: box-shadow 0.3s ease;
+    box-shadow: 3px 3px 6px $gray15;
+    cursor: pointer;
+
+    img {max-width: 100%; min-width: 16rem;}
 
     @keyframes workMoveR2 {
       0% {top: 3rem; transform: perspective(28rem) rotateY(-21deg); transform-origin: 12% 226%; opacity: 0; }
-      5% {opacity: 0.5;}
+      3% {opacity: 0.1;}
+      6% {opacity: 0.6;}
+      8% {opacity: 1.0;}
       10% {opacity: 1.0;}
       90% {opacity: 1.0;}
-      95% {opacity: 0.5;}
+      93% {opacity: 1.0;}
+      95% {opacity: 0.0;}
       100% {top: 35rem; transform: perspective(12rem) rotateY(-6deg); transform-origin: 20% -40%; opacity: 0; }
     }
+  }
+  .contentR2:hover {
+    box-shadow: -3px 3px 6px $yellowLight;
   }
 }
 
@@ -861,19 +962,5 @@ body {
   80%  {color: $gray75;}
   90%  {color: $gray75;}
   100% {color: $gray75;}
-}
-
-@keyframes fadeIn {
-  0% {opacity: 0.0;}
-  10% {opacity: 0.1;}
-  20% {opacity: 0.2;}
-  30% {opacity: 0.3;}
-  40% {opacity: 0.4;}
-  50% {opacity: 0.5;}
-  60% {opacity: 0.6;}
-  70% {opacity: 0.7;}
-  80% {opacity: 0.8;}
-  90% {opacity: 0.9;}
-  100% {opacity: 1.0;}
 }
 
