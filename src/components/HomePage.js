@@ -4,7 +4,8 @@ import WorkL2 from './WorkL2';
 import WorkR1 from './WorkR1';
 import WorkR2 from './WorkR2';
 import WorkInfo from './WorkInfo';
-import {string} from 'prop-types';
+import Modal from '../modal/Modal';
+import {string, object, func} from 'prop-types';
 
 class HomePage extends Component {
 
@@ -116,13 +117,28 @@ class HomePage extends Component {
     this.setState({workTech: info.tech_used});
     this.setState({workUrl: info.res_url});
     this.setState({workInst: info.sample_inst});
+  }
+
+  showModal = () => {
+    console.log('showModal hiy');
 
   }
 
   render() {
+    const isAnyModalOpen = false;
+    const curTabIndex = isAnyModalOpen ? "-1" : undefined;
+    const modalInfo = {
+      header: "Preview of CTB-Generated Consult Comments",
+      bodyMsg: "",
+      options: {
+        initialFocus: "#react-aria-modal-dialog",
+        focusDialog: true,
+        dialogClass: "preview-modal",
+      }
+    };
     return (
       <>
-        <div className="main-container">
+        <div className="main-container" aria-hidden={isAnyModalOpen} tabIndex={curTabIndex}>
 
           <div className="nameTitle">
             <h1>CAMERON CHILTON</h1>
@@ -401,9 +417,18 @@ class HomePage extends Component {
             workTech={this.state.workTech}
             workUrl={this.state.workUrl}
             workInst={this.state.workInst}
+            showModal={this.showModal}
           />
 
         </div>
+
+        <Modal
+          header={modalInfo.header}
+          bodyMsg={modalInfo.bodyMsg}
+          closeModal={Modal}
+          options={modalInfo.options}
+        />
+
       </>
     );
   }
@@ -416,6 +441,8 @@ HomePage.propTypes = {
   workTech: string,
   workUrl: string,
   workInst: string,
+  Modal: object,
+  closeCtbModal: func,
 };
 
 export default HomePage;

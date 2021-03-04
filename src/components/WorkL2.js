@@ -38,7 +38,7 @@ class WorkL2 extends Component {
         .then(response => response.json())
         .then(data => this.setState({work1data: data}));
         this.setState({newSampleUp: true});
-    }, 19000);
+    }, 14400);
 
   }
 

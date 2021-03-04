@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {string} from 'prop-types';
+import {string, func} from 'prop-types';
 
 class WorkInfo extends Component {
 
@@ -17,19 +17,22 @@ class WorkInfo extends Component {
           {workUrl &&
             <button
               className="workButton"
-              onClick={ () => {this.openSample(workUrl)} }>
-                {workInst}
+              onClick={ () => {this.openSample(workUrl)} }
+            >
+              {workInst}
             </button>
           }
         </div>
         <div className="workText">
-          <div className="workTitle">{workTitle}</div>
+          <div className="workTitle">{workTitle !== '' ? workTitle : 'SELECT SAMPLES FOR MORE INFORMATION'}</div>
           <div className="workDesc">{workDesc}</div>
           <div className="workTech">{workTech}</div>
         </div>
         <div className="workInfo">
           <div className="posDiv">
-            <div className="workImg">{workImg !== '' ? <img src={workImg} /> : ''}</div>
+            <div className="workImg">
+              {workImg !== '' ? <img src={workImg} onClick={ () => {this.props.showModal(workUrl)} } /> : ''}
+            </div>
           </div>
         </div>
       </>
@@ -46,6 +49,7 @@ WorkInfo.propTypes = {
   workTech: string,
   workUrl: string,
   workInst: string,
+  showModal: func,
 };
 
 export default WorkInfo;
