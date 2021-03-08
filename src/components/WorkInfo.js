@@ -1,15 +1,38 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {string, func} from 'prop-types';
+import { connect } from "react-redux";
+import {openModal, closeModal} from "../actions/modalActions";
 
-class WorkInfo extends Component {
+export const WorkInfo = ({
+    openModal,
+    workTitle,
+    workImg,
+    workDesc,
+    workTech,
+    workUrl,
+    workInst
+  }) => {
 
-  openSample = (url) => {
-    window.open(url);
-  }
+    const openSample = (url) => {
+      window.open(url);
+    };
 
-  render() {
-
-    const {workTitle, workImg, workDesc, workTech, workUrl, workInst} = this.props;
+    const showModal = (url) => {
+      console.log('showModal hit: ' + url);
+      const modalInfo = {
+        header: "CC Header",
+        bodyMsg: "",
+        onClose: () => {
+          closeModal();
+        },
+        options: {
+          initialFocus: "#react-aria-modal-dialog",
+          focusDialog: true,
+          dialogClass: "",
+        },
+      };
+      openModal(modalInfo);
+    };
 
     return (
       <>
@@ -17,28 +40,29 @@ class WorkInfo extends Component {
           {workUrl &&
             <button
               className="workButton"
-              onClick={ () => {this.openSample(workUrl)} }
+              onClick={ () => {openSample(workUrl)} }
             >
               {workInst}
             </button>
           }
         </div>
         <div className="workText">
-          <div className="workTitle">{workTitle !== '' ? workTitle : 'SELECT SAMPLES FOR MORE INFORMATION'}</div>
+          <div className="workTitle">{workTitle}</div>
           <div className="workDesc">{workDesc}</div>
-          <div className="workTech">{workTech}</div>
+          <div className="workTech">{workTech !== '' ? workTech : 'SELECT SAMPLES FOR MORE INFORMATION'}</div>
         </div>
         <div className="workInfo">
           <div className="posDiv">
             <div className="workImg">
-              {workImg !== '' ? <img src={workImg} onClick={ () => {this.props.showModal(workUrl)} } /> : ''}
+              {workImg !== '' ? <img src={workImg} title="Click for larger image" onClick={showModal(workUrl)} /> : ''}
             </div>
+            {
+              workImg && <img src="../imgs/hand-icon.svg" className="handIcon" />
+            }
           </div>
         </div>
       </>
     );
-
-  }
 
 }
 
@@ -50,6 +74,17 @@ WorkInfo.propTypes = {
   workUrl: string,
   workInst: string,
   showModal: func,
+  // Dispatch Functions
+  openModal: func.isRequired,
 };
 
-export default WorkInfo;
+const mapStateToProps = (state) => ({
+  modal: state.modal,
+});
+
+export default connect(mapStateToProps, {
+    openModal,
+    closeModal,
+  }
+)(WorkInfo);
+

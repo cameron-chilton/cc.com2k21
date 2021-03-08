@@ -67,7 +67,7 @@ const ReactAriaModalWrapper = ({
 
   const modalProps = compactObj({
     titleId,
-    mounted: false,
+    mounted: isOpen,
     onExit,
     getApplicationNode,
     alert,
@@ -104,7 +104,7 @@ ReactAriaModalWrapper.propTypes = {
   containerCss: string.isRequired,
   children: node.isRequired,
   isOpen: bool.isRequired,
-  onExit: func.isRequired,
+  onExit: func,
   getApplicationNode: func,
   alert: bool,
   focusDialog: bool,

@@ -4,19 +4,36 @@ import ReactAriaModalWrapper from "./ReactAriaModalWrapper";
 
 const Modal = ({
   isOpen,
+  header,
   bodyMsg,
   closeModal,
+  onClose,
   options,
 }) => {
 
   const containerCss = "modal-container";
   const { ...otherOpts } = options;
   const titleId = "modal-title";
-  const header = "CC";
+  const DefaultFooter = (
+    <span className="ctb-display-inline-block">
+      <button id="ctb-modal-footer-close-btn"
+        className="usa-button ctb-modal-footer-close-btn"
+        onClick={() => {
+          closeModal();
+
+          if (onClose) {
+            onClose();
+          }
+        }}
+      >
+        { "CLOSE" }
+      </button>
+    </span>
+  );
 
   return (
     <ReactAriaModalWrapper
-      mainId="ctb-modal"
+      mainId="modal"
       titleId={titleId}
       containerCss={containerCss}
       isOpen={isOpen}
@@ -32,6 +49,9 @@ const Modal = ({
       <div id="modal-body">
         <div id="body-message">{bodyMsg}</div>
       </div>
+      <div className="ctb-text-center ctb-vert-align-top">
+          {DefaultFooter}
+        </div>
     </ReactAriaModalWrapper>
   );
 };
@@ -40,7 +60,7 @@ Modal.propTypes = {
   isOpen: bool.isRequired,
   header: string,
   bodyMsg: string,
-  closeModal: func.isRequired,
+  closeModal: func,
   onClose: func,
   options: object,
 };

@@ -59,7 +59,7 @@ class WorkR1 extends Component {
 
     return (
       <div className="workR1">
-        <div className="contentR1">
+        <div className={this.state.work1img !== null ? `contentR1` : 'contentNONE'}>
           {this.state.work1img && <img src={this.state.work1img} onClick={ () => {this.props.clickSample(this.state.work1Info);} } />}
         </div>
       </div>
