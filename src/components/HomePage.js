@@ -7,6 +7,7 @@ import WorkR1 from './WorkR1';
 import WorkR2 from './WorkR2';
 import WorkInfo from './WorkInfo';
 import Modal from '../modal/Modal';
+import {closeModal} from "../actions/modalActions";
 
 class HomePage extends Component {
 
@@ -122,7 +123,7 @@ class HomePage extends Component {
 
   render() {
 
-    const {modal} = this.props;
+    const {modal, closeModal} = this.props;
 
     return (
       <>
@@ -414,7 +415,7 @@ class HomePage extends Component {
           isOpen={modal.isModalOpen}
           header={modal.header}
           bodyMsg={modal.bodyMsg}
-          //closeModal={closeModal}
+          closeModal={closeModal}
           onClose={modal.onClose}
           options={modal.options}
         />
@@ -433,6 +434,7 @@ HomePage.propTypes = {
   workInst: string,
   // Redux state
   modal: object,
+  closeModal: func,
 };
 
 const mapStateToProps = (state) => ({
@@ -441,7 +443,7 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, {
     //openModal,
-    //closeModal,
+    closeModal,
   }
 )(HomePage);
 

@@ -54,7 +54,7 @@ export const WorkInfo = ({
         <div className="workInfo">
           <div className="posDiv">
             <div className="workImg">
-              {workImg !== '' ? <img src={workImg} title="Click for larger image" onClick={showModal(workUrl)} /> : ''}
+              {workImg !== '' ? <img src={workImg} title="Click for larger image" onClick={ () => {showModal(workUrl)} } /> : ''}
             </div>
             {
               workImg && <img src="../imgs/hand-icon.svg" className="handIcon" />
