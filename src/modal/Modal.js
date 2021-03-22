@@ -6,6 +6,10 @@ const Modal = ({
   isOpen,
   header,
   bodyMsg,
+  workImg,
+  workTech,
+  workUrl,
+  workInst,
   closeModal,
   onClose,
   options,
@@ -14,22 +18,9 @@ const Modal = ({
   const containerCss = "modal-container";
   const { ...otherOpts } = options;
   const titleId = "modal-title";
-  const DefaultFooter = (
-    <span className="ctb-display-inline-block">
-      <button id="ctb-modal-footer-close-btn"
-        className="usa-button ctb-modal-footer-close-btn"
-        onClick={() => {
-          closeModal();
-
-          if (onClose) {
-            onClose();
-          }
-        }}
-      >
-        { "CLOSE" }
-      </button>
-    </span>
-  );
+  const openSample = (url) => {
+    window.open(url);
+  };
 
   return (
     <ReactAriaModalWrapper
@@ -39,19 +30,31 @@ const Modal = ({
       isOpen={isOpen}
       onExit={closeModal}
       initialFocus={ otherOpts.initialFocus || `#${titleId}` }
-      underlayClickExits={false}
+      underlayClickExits={true}
       { ...otherOpts }
     >
       <div id="modal-header" className="modal-header">
-        <h2 id={titleId} className="">{header}</h2>
+        <div className="modal-text">
+          <h2 className="">{header}</h2>
+          <h4>{bodyMsg}</h4>
+          <h5>{workTech}</h5>
+        </div>
+        <div className="modal-ctrls">
+          {workUrl &&
+            <button className="workButton" onClick={ () => {openSample(workUrl)} }>{workInst}</button>
+          }
+          <button className="modal-close-btn" title="Close Window" onClick={() => {
+            closeModal();
+              if (onClose) {
+                onClose();
+              }
+            }}>{"X"}</button>
+        </div>
+      </div>
+      <div className="modal-img">
+        <img src={workImg} />
       </div>
 
-      <div id="modal-body">
-        <div id="body-message">{bodyMsg}</div>
-      </div>
-      <div className="ctb-text-center ctb-vert-align-top">
-          {DefaultFooter}
-        </div>
     </ReactAriaModalWrapper>
   );
 };
@@ -60,6 +63,10 @@ Modal.propTypes = {
   isOpen: bool.isRequired,
   header: string,
   bodyMsg: string,
+  workImg: string,
+  workUrl: string,
+  workTech: string,
+  workInst: string,
   closeModal: func,
   onClose: func,
   options: object,

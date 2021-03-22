@@ -32,7 +32,7 @@ $gray100: #231f20;
 @import url('https://fonts.googleapis.com/css2?family=Pragati+Narrow:wght@400;700&display=swap');
 
 /* global settings */
-a, div, html, body, span, h1, h2 {padding: 0; margin: 0;}
+a, div, html, body, span, h1, h2, h3, h4, h5, button {padding: 0; margin: 0;}
 
 /* Styles */
 body {
@@ -237,31 +237,33 @@ body {
 
 }
 
+/* work sample area */
+
 .workLink {
   position: absolute;
   bottom: 4.24rem;
   right: 15.60rem;
   z-index: 999;
+}
 
-  .workButton {
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.08rem;
-    color: $blue2;
-    font-family: 'Pragati Narrow', sans-serif;
-    background-color: $blue1;
-    transition: box-shadow 0.1s ease, background-color 0.1s ease;
-    box-shadow: -1px 1px 3px $gray20;
-    border-radius: 3px;
-    border: 1px solid $gray40;
-    padding: 0 0.24rem;
-    cursor: pointer;
-  }
+.workButton {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08rem;
+  color: $blue2;
+  font-family: 'Pragati Narrow', sans-serif;
+  background-color: $blue1;
+  transition: box-shadow 0.1s ease, background-color 0.1s ease;
+  box-shadow: -1px 1px 3px $gray20;
+  border-radius: 3px;
+  border: 1px solid $gray40;
+  padding: 0 0.24rem;
+  cursor: pointer;
+}
 
-  .workButton:hover {
-    box-shadow: -1px 1px 3px $gray40;
-    background-color: $blueHilite;
-  }
+.workButton:hover {
+  box-shadow: -1px 1px 3px $gray40;
+  background-color: $blueHilite;
 }
 
 .workText {
@@ -283,8 +285,6 @@ body {
   position: absolute;
   right: 0.96rem;
   bottom: 0.96rem;
-  width: 14rem;
-  height: 14rem;
   z-index: 999;
 
   .posDiv {
@@ -297,8 +297,7 @@ body {
       position: absolute;
       bottom: 0;
       right: 0;
-      width: 14rem;
-      height: 14rem;
+      width: 18rem;
       box-shadow: -1px 1px 4px $gray30;
       border: 1px solid $gray30;
       cursor: pointer;
@@ -318,10 +317,9 @@ body {
     box-shadow: 2px 2px 5px $yellowLight;
   }
 
-
 }
 
-/* work sample Left 1 */
+/* work sample moving columns */
 
 .workL1 {
   position: absolute;
@@ -344,9 +342,6 @@ body {
     border: 1px solid $gray20;
     transition: box-shadow 0.3s ease;
     box-shadow: -3px 3px 6px $gray15;
-    cursor: pointer;
-
-      img {max-width: 100%; min-width: 10rem;}
 
       @keyframes workMoveL1 {
         0% {bottom: 0.8rem; transform: perspective(39rem) rotateY(24deg); transform-origin: -24% -19%; opacity: 0; }
@@ -363,6 +358,13 @@ body {
 
   .contentL1:hover {
     box-shadow: -3px 3px 6px $yellowLight;
+  }
+  .contentL1 > div {
+    position: relative;
+    width: inherit;
+    height: inherit;
+
+    > img {position: absolute; top: -10%; left: 0; min-width: 9rem;}
   }
 
 }
@@ -389,9 +391,6 @@ body {
     border: 1px solid $gray20;
     transition: box-shadow 0.3s ease;
     box-shadow: 3px 3px 4px $gray15;
-    cursor: pointer;
-
-    img {max-width: 100%; min-width: 11rem;}
 
     @keyframes workMoveL2 {
       0% {top: 4.2rem; transform: perspective(16rem) rotateY(-19deg); transform-origin: 10% 230%; opacity: 0; }
@@ -407,6 +406,13 @@ body {
   }
   .contentL2:hover {
     box-shadow: 3px 3px 4px $yellowLight;
+  }
+  .contentL2 > div {
+    position: relative;
+    width: inherit;
+    height: inherit;
+
+    > img {position: absolute; bottom: -20%; left: 0; min-width: 10rem;}
   }
 }
 
@@ -431,9 +437,6 @@ body {
     border: 1px solid $gray20;
     transition: box-shadow 0.3s ease;
     box-shadow: -3px 3px 6px $gray15;
-    cursor: pointer;
-
-    img {max-width: 100%; min-width: 13rem;}
 
     @keyframes workMoveR1 {
       0% { bottom: 0.8rem; height: 15.2rem; transform: perspective(32rem) rotateY(24deg);transform-origin: -30% -2%; opacity: 0; }
@@ -449,6 +452,13 @@ body {
   }
   .contentR1:hover {
     box-shadow: -3px 3px 6px $yellowLight;
+  }
+  .contentR1 > div {
+    position: relative;
+    width: inherit;
+    height: inherit;
+
+    > img {position: absolute; top: -20%; right: 0; min-width: 9rem;}
   }
 }
 
@@ -474,9 +484,6 @@ body {
     border: 1px solid $gray20;
     transition: box-shadow 0.3s ease;
     box-shadow: 3px 3px 6px $gray15;
-    cursor: pointer;
-
-    img {max-width: 100%; min-width: 11rem;}
 
     @keyframes workMoveR2 {
       0% {top: 3rem; transform: perspective(28rem) rotateY(-21deg); transform-origin: 12% 226%; opacity: 0; }
@@ -493,12 +500,65 @@ body {
   .contentR2:hover {
     box-shadow: -3px 3px 6px $yellowLight;
   }
+  .contentR2 > div {
+    position: relative;
+    width: inherit;
+    height: inherit;
+
+    > img {position: absolute; bottom: -20%; right: 0; min-width: 10rem;}
+  }
 }
 
 .contentNONE {
   opacity: 0;
 }
 
+/* modal styles */
+
+.modal-container {
+  height: auto;
+  min-width: 32rem;
+  background-color: white;
+  padding: 0.48rem 0.48rem 0 0.48rem;
+  margin: 0 auto;
+  box-shadow: 0px 0px 24px $gray100;
+  text-align: center;
+  z-index: 999;
+
+  .modal-header {
+    display: flex;
+    flex-wrap: column;
+
+    .modal-text {
+      flex: 76%;
+      h2 {font-size: 0.96rem; line-height: 1.12rem; font-weight: 700; letter-spacing: 0.084rem; color: $gray75; width: 84%; text-align: left; margin-left: 0.0rem;}
+      h4 {font-size: 0.72rem; line-height: 1.08rem; font-weight: 400; text-transform: uppercase; letter-spacing: 0.084rem; color: $gray60; width: 84%; text-align: left; margin-left: 0.04rem;}
+      h5 {font-size: 0.64rem; line-height: 0.80rem; font-weight: 400; text-transform: uppercase; letter-spacing: 0.072rem; color: $gray40; width: 84%; text-align: left; margin-left: 0.08rem;}
+    }
+    .modal-ctrls {
+      flex: 24%;
+      text-align: right;
+
+      .workButton {margin: 0.62rem 0.96rem 0 0; vertical-align: top;}
+      .modal-close-btn {
+        margin: 0 0 -0.48rem 0;
+        background-color: white;
+        border: red;
+        font-size: 1.72rem;
+        line-height: 1.72rem;
+        font-family: 'Pragati Narrow', sans-serif;
+        font-weight: 400;
+        color: $gray30;
+        cursor: pointer;
+        padding: 0.48rem;
+        vertical-align: top;
+      }
+    }
+  }
+
+  .modal-img { margin: 0.48rem 0 0 0;}
+
+}
 
 /* MAIN TEXT STYLES */
 .word {margin: 0 0.8rem;}

@@ -5,6 +5,7 @@ import WorkL1 from './WorkL1';
 import WorkL2 from './WorkL2';
 import WorkR1 from './WorkR1';
 import WorkR2 from './WorkR2';
+// eslint-disable-next-line import/no-named-as-default
 import WorkInfo from './WorkInfo';
 import Modal from '../modal/Modal';
 import {closeModal} from "../actions/modalActions";
@@ -131,7 +132,7 @@ class HomePage extends Component {
 
             <div className="nameTitle">
               <h1>CAMERON CHILTON</h1>
-              <h2>UI/UX DESIGN/DEVELOPMENT</h2>
+              <h2>UI / UX / DESIGN / DEVELOPMENT</h2>
               <div>
                 <a href="https://www.linkedin.com/in/cameronchilton/" className="main-icons" target="_blank" rel="noopener noreferrer" title="Visit LinkedIn Profile">
                   <img className="" src="../imgs/linkedin.svg" />
@@ -415,6 +416,10 @@ class HomePage extends Component {
           isOpen={modal.isModalOpen}
           header={modal.header}
           bodyMsg={modal.bodyMsg}
+          workTech={modal.workTech}
+          workImg={modal.workImg}
+          workUrl={modal.workUrl}
+          workInst={modal.workInst}
           closeModal={closeModal}
           onClose={modal.onClose}
           options={modal.options}
@@ -442,9 +447,6 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, {
-    //openModal,
     closeModal,
   }
 )(HomePage);
-
-//export default HomePage;

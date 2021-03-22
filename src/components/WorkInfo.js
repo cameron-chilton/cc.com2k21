@@ -17,11 +17,14 @@ export const WorkInfo = ({
       window.open(url);
     };
 
-    const showModal = (url) => {
-      console.log('showModal hit: ' + url);
+    const showModal = (workTitle, workDesc, workTech, workImg) => {
       const modalInfo = {
-        header: "CC Header",
-        bodyMsg: "",
+        header: workTitle,
+        bodyMsg: workDesc,
+        workTech: workTech,
+        workImg: workImg,
+        workUrl: workUrl,
+        workInst: workInst,
         onClose: () => {
           closeModal();
         },
@@ -38,12 +41,7 @@ export const WorkInfo = ({
       <>
         <div className="workLink">
           {workUrl &&
-            <button
-              className="workButton"
-              onClick={ () => {openSample(workUrl)} }
-            >
-              {workInst}
-            </button>
+            <button className="workButton" onClick={ () => {openSample(workUrl)} }>{workInst}</button>
           }
         </div>
         <div className="workText">
@@ -54,7 +52,7 @@ export const WorkInfo = ({
         <div className="workInfo">
           <div className="posDiv">
             <div className="workImg">
-              {workImg !== '' ? <img src={workImg} title="Click for larger image" onClick={ () => {showModal(workUrl)} } /> : ''}
+              {workImg !== '' ? <img src={workImg} title="Click for larger image" onClick={ () => {showModal(workTitle, workDesc, workTech, workImg, workInst, workUrl)} } /> : ''}
             </div>
             {
               workImg && <img src="../imgs/hand-icon.svg" className="handIcon" />
@@ -75,7 +73,7 @@ WorkInfo.propTypes = {
   workInst: string,
   showModal: func,
   // Dispatch Functions
-  openModal: func.isRequired,
+  openModal: func,
 };
 
 const mapStateToProps = (state) => ({

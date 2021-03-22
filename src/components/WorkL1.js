@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import {func} from 'prop-types';
+import {func, object} from 'prop-types';
+import { connect } from "react-redux";
+import {setWorkL1} from "../actions/workSampleActions";
 
 class WorkL1 extends Component {
 
@@ -7,6 +9,7 @@ class WorkL1 extends Component {
     super();
     this.state = {
       work1data: null,
+      work1id: null,
       work1Info: {},
       work1img: '',
       newSampleUp: true,
@@ -21,7 +24,6 @@ class WorkL1 extends Component {
     if (this.state.work1data !== null && this.state.newSampleUp) {
       this.addWorkData(this.state.work1data);
     }
-
   }
 
   fetchWorkData = () => {
@@ -53,6 +55,9 @@ class WorkL1 extends Component {
     this.setState({work1img: workLev1.img_url});
     // set newSampleUp to false
     this.setState({newSampleUp: false});
+    // set work L1 id in redux state
+    this.props.setWorkL1(workLev1.id);
+    //console.log('work1id: ' + store.sampleInfo.work1id)
   }
 
   render() {
@@ -60,7 +65,9 @@ class WorkL1 extends Component {
     return (
       <div className="workL1">
         <div className={this.state.work1img !== null ? `contentL1` : 'contentNONE'}>
-          {this.state.work1img && <img src={this.state.work1img} onClick={ () => {this.props.clickSample(this.state.work1Info);} } />}
+          <div>
+            {this.state.work1img && <img src={this.state.work1img} onClick={ () => {this.props.clickSample(this.state.work1Info);} } />}
+          </div>
         </div>
       </div>
     );
@@ -71,6 +78,15 @@ class WorkL1 extends Component {
 
 WorkL1.propTypes = {
   clickSample: func,
+  setWorkL1: func,
+  sampleInfo: object,
 };
 
-export default WorkL1;
+const mapStateToProps = (state) => ({
+  sampleInfo: state.sampleInfo,
+});
+
+export default connect(mapStateToProps, {
+  setWorkL1,
+}
+)(WorkL1);

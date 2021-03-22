@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {func} from 'prop-types';
+import { connect } from "react-redux";
+import {setWorkR2} from "../actions/workSampleActions";
 
 class WorkR2 extends Component {
 
@@ -53,6 +55,8 @@ class WorkR2 extends Component {
     this.setState({work1img: workLev1.img_url});
     // set newSampleUp to false
     this.setState({newSampleUp: false});
+    // set work R2 id in redux state
+    this.props.setWorkR2(workLev1.id);
   }
 
   render() {
@@ -60,7 +64,9 @@ class WorkR2 extends Component {
     return (
       <div className="workR2">
         <div className={this.state.work1img !== null ? `contentR2` : 'contentNONE'}>
-          {this.state.work1img && <img src={this.state.work1img} onClick={ () => {this.props.clickSample(this.state.work1Info);} } />}
+          <div>
+            {this.state.work1img && <img src={this.state.work1img} onClick={ () => {this.props.clickSample(this.state.work1Info);} } />}
+          </div>
         </div>
       </div>
     );
@@ -71,6 +77,14 @@ class WorkR2 extends Component {
 
 WorkR2.propTypes = {
   clickSample: func,
+  setWorkR2: func,
 };
 
-export default WorkR2;
+const mapStateToProps = (state) => ({
+  sampleInfo: state.sampleInfo,
+});
+
+export default connect(mapStateToProps, {
+  setWorkR2,
+}
+)(WorkR2);
