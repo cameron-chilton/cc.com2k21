@@ -62,8 +62,8 @@ body {
   left: 1.5rem;
   z-index: 99;
 
-  h1 {font-weight: 700; font-size: 2.1em; line-height: 2.1rem; letter-spacing: 0.09rem; margin: 0; text-shadow: -3px 3px 4px $yellowLight; color: $gray75;}
-  h2 {font-weight: 400; font-size: 1.2rem; line-height: 1.6rem; letter-spacing: 0.15rem; margin: 0 0 0 0.1rem; text-shadow: -2px 2px 4px $yellowLight; color: $gray60;}
+  h1 {font-weight: 700; font-size: 2.04em; line-height: 2.1rem; letter-spacing: 0.12rem; margin: 0; text-shadow: -3px 3px 4px $yellowLight; color: $gray75;}
+  h2 {font-weight: 400; font-size: 1.2rem; line-height: 1.6rem; letter-spacing: 0.12rem; margin: 0 0 0 0.1rem; text-shadow: -2px 2px 4px $yellowLight; color: $gray60;}
   .main-icons {margin: 0.2rem 1.3rem 0 0.2rem; display: inline-block;}
   .main-icons img {width: 21px; height: 21px;}
 }
@@ -336,7 +336,7 @@ body {
     left: 0.5rem;
     opacity: 0;
     position: absolute;
-    animation: workMoveL1 18s linear 1.6s infinite;
+    animation: workMoveL1 21s linear 1.6s infinite;
     background: white;
     overflow: hidden;
     border: 1px solid $gray20;
@@ -382,7 +382,7 @@ body {
     left: 0.1rem;
     width: 8.7rem;
     position: absolute;
-    animation: workMoveL2 14s linear 1.7s infinite;
+    animation: workMoveL2 17s linear 1.7s infinite;
     height: 10rem;
     opacity: 0;
     top: 4.2rem;
@@ -430,7 +430,7 @@ body {
     width: 11rem;
     height: 8rem;
     position: absolute;
-    animation: workMoveR1 15s linear 1.2s infinite;
+    animation: workMoveR1 18s linear 1.2s infinite;
     opacity: 0;
     background: white;
     overflow: hidden;
@@ -476,7 +476,7 @@ body {
     width: 9.8rem;
     height: 10rem;
     position: absolute;
-    animation: workMoveR2 17s linear 2.2s infinite;
+    animation: workMoveR2 20s linear 2.2s infinite;
     top: 3rem;
     opacity: 0;
     background: white;

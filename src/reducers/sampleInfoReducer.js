@@ -29,7 +29,6 @@ import {
         ...state,
         work4id: action.workId,
       };
-
     default:
       return state;
   }
