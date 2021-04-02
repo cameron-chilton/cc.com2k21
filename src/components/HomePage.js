@@ -165,7 +165,7 @@ class HomePage extends Component {
       workUrl: workLev1.res_url,
       workInst: workLev1.sample_inst,
       workId: workLev1.id,
-      hideNext: (workIdNum < 25) ? false : true,
+      hideNext: (workIdNum < 30) ? false : true,
       hidePrev: (workIdNum >= 2) ? false : true,
       onClose: () => {
         closeModal();
