@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {string, func, object} from 'prop-types';
+import {string, func, object, bool} from 'prop-types';
 import { connect } from "react-redux";
 import WorkL1 from './WorkL1';
 import WorkL2 from './WorkL2';
@@ -8,7 +8,7 @@ import WorkR2 from './WorkR2';
 // eslint-disable-next-line import/no-named-as-default
 import WorkInfo from './WorkInfo';
 import Modal from '../modal/Modal';
-import {closeModal} from "../actions/modalActions";
+import {closeModal, updateModal} from "../actions/modalActions";
 
 class HomePage extends Component {
 
@@ -28,6 +28,10 @@ class HomePage extends Component {
       workTech: '',
       workUrl: '',
       workInst: '',
+      workId: '',
+      // NEXT MODAL INFO
+      nextSample: '',
+      getNextSample: false,
     };
   }
 
@@ -120,297 +124,351 @@ class HomePage extends Component {
     this.setState({workTech: info.tech_used});
     this.setState({workUrl: info.res_url});
     this.setState({workInst: info.sample_inst});
+    this.setState({workId: info.id});
+  }
+
+  componentDidUpdate() {
+    if (this.state.nextSample !== '' && this.state.getNextSample) {
+      this.updateModalHP(this.state.nextSample);
+      this.setState({nextSample: ''});
+      this.setState({getNextSample: false});
+    }
+  }
+
+  workNext = (id) => {
+    const url = `http://localhost/php/getNext.php?currentID=${id}`;
+    fetch(url)
+      .then(response => response.json())
+      .then(data => this.setState({nextSample: data}));
+    this.setState({getNextSample: true});
+  };
+
+  workPrev = (id) => {
+    const url = `http://localhost/php/getPrev.php?currentID=${id}`;
+    fetch(url)
+      .then(response => response.json())
+      .then(data => this.setState({nextSample: data}));
+    this.setState({getNextSample: true});
+  };
+
+  updateModalHP = (data) => {
+    // get returned obj
+    const nextSample = Object.values(data);
+    // remove wrapper array
+    const workLev1 = nextSample[0];
+    let workIdNum = parseInt(workLev1.id);
+    const modalInfo = {
+      header: workLev1.title,
+      bodyMsg: workLev1.desc,
+      workTech: workLev1.tech_used,
+      workImg: workLev1.img_url,
+      workUrl: workLev1.res_url,
+      workInst: workLev1.sample_inst,
+      workId: workLev1.id,
+      hideNext: (workIdNum < 25) ? false : true,
+      hidePrev: (workIdNum >= 2) ? false : true,
+      onClose: () => {
+        closeModal();
+      },
+      options: {
+        initialFocus: "#react-aria-modal-dialog",
+        focusDialog: true,
+        dialogClass: "",
+      },
+    };
+    this.props.updateModal(modalInfo);
   }
 
   render() {
 
-    const {modal, closeModal} = this.props;
+    const {modal, closeModal, updateModal} = this.props;
 
     return (
       <>
+
         <div className="main-container">
 
-            <div className="nameTitle">
-              <h1>CAMERON CHILTON</h1>
-              <h2>UI / UX / DESIGN / DEVELOPMENT</h2>
-              <div>
-                <a href="https://www.linkedin.com/in/cameronchilton/" className="main-icons" target="_blank" rel="noopener noreferrer" title="Visit LinkedIn Profile">
-                  <img className="" src="../imgs/linkedin.svg" />
-                </a>
-                <a href="https://github.com/cameron-chilton" className="main-icons" target="_blank" rel="noopener noreferrer" title="Visit GitHub Profile">
-                  <img className="" src="../imgs/github.svg" />
-                </a>
-                <a href="../imgs/CameronChilton-UX-Architect-UI-Developer-2021.docx" className="main-icons" title="Download Resume" download>
-                  <img className="" src="../imgs/msWord.svg" />
-                </a>
-              </div>
+          <div className="nameTitle">
+            <h1>CAMERON CHILTON</h1>
+            <h2>UI / UX / DESIGN / DEVELOPMENT</h2>
+            <div>
+              <a href="https://www.linkedin.com/in/cameronchilton/" className="main-icons" target="_blank" rel="noopener noreferrer" title="Visit LinkedIn Profile">
+                <img className="" src="../imgs/linkedin.svg" />
+              </a>
+              <a href="https://github.com/cameron-chilton" className="main-icons" target="_blank" rel="noopener noreferrer" title="Visit GitHub Profile">
+                <img className="" src="../imgs/github.svg" />
+              </a>
+              <a href="../imgs/CameronChilton-UX-Architect-UI-Developer-2021.docx" className="main-icons" title="Download Resume" download>
+                <img className="" src="../imgs/msWord.svg" />
+              </a>
             </div>
-
-            <div className="left-front">
-              <div className="left-front-content">
-                <div className="left-front-text">
-                  <span className="word">
-                    <span className={"lf-" + this.state.lfCnum56}>S</span>
-                    <span className={"lf-" + this.state.lfCnum55}>O</span>
-                    <span className={"lf-" + this.state.lfCnum54}>F</span>
-                    <span className={"lf-" + this.state.lfCnum53}>T</span>
-                    <span className={"lf-" + this.state.lfCnum49}>W</span>
-                    <span className={"lf-" + this.state.lfCnum50}>A</span>
-                    <span className={"lf-" + this.state.lfCnum51}>R</span>
-                    <span className={"lf-" + this.state.lfCnum52}>E</span>
-                  </span>
-                  <span className="word">
-                    <span className={"lf-" + this.state.lfCnum53}>R</span>
-                    <span className={"lf-" + this.state.lfCnum54}>E</span>
-                    <span className={"lf-" + this.state.lfCnum55}>A</span>
-                    <span className={"lf-" + this.state.lfCnum56}>C</span>
-                    <span className={"lf-" + this.state.lfCnum57}>T</span>
-                  </span>
-                  <span className="word">
-                    <span className={"lf-" + this.state.lfCnum58}>U</span>
-                    <span className={"lf-" + this.state.lfCnum59}>S</span>
-                    <span className={"lf-" + this.state.lfCnum60}>E</span>
-                    <span className={"lf-" + this.state.lfCnum61}>R</span>
-                  </span>
-                  <span className="word">
-                    <span className={"lf-" + this.state.lfCnum49}>J</span>
-                    <span className={"lf-" + this.state.lfCnum50}>A</span>
-                    <span className={"lf-" + this.state.lfCnum51}>V</span>
-                    <span className={"lf-" + this.state.lfCnum52}>A</span>
-                    <span className={"lf-" + this.state.lfCnum53}>S</span>
-                    <span className={"lf-" + this.state.lfCnum54}>C</span>
-                    <span className={"lf-" + this.state.lfCnum55}>R</span>
-                    <span className={"lf-" + this.state.lfCnum56}>I</span>
-                    <span className={"lf-" + this.state.lfCnum57}>P</span>
-                    <span className={"lf-" + this.state.lfCnum58}>T</span>
-                  </span>
-                  <span className="word">
-                    <span className={"lf-" + this.state.lfCnum53}>G</span>
-                    <span className={"lf-" + this.state.lfCnum54}>R</span>
-                    <span className={"lf-" + this.state.lfCnum55}>A</span>
-                    <span className={"lf-" + this.state.lfCnum56}>P</span>
-                    <span className={"lf-" + this.state.lfCnum57}>H</span>
-                    <span className={"lf-" + this.state.lfCnum58}>I</span>
-                    <span className={"lf-" + this.state.lfCnum59}>C</span>
-                  </span>
-                  <span className="word">
-                    <span className={"lf-" + this.state.lfCnum64}>I</span>
-                    <span className={"lf-" + this.state.lfCnum63}>C</span>
-                    <span className={"lf-" + this.state.lfCnum62}>O</span>
-                    <span className={"lf-" + this.state.lfCnum61}>N</span>
-                    <span className={"lf-" + this.state.lfCnum60}>S</span>
-                  </span>
-                  <span className="word">
-                    <span className={"lf-" + this.state.lfCnum60}>C</span>
-                    <span className={"lf-" + this.state.lfCnum59}>S</span>
-                    <span className={"lf-" + this.state.lfCnum58}>S</span>
-                  </span>
-                  <span className="word">
-                    <span className={"lf-" + this.state.lfCnum51}>L</span>
-                    <span className={"lf-" + this.state.lfCnum52}>A</span>
-                    <span className={"lf-" + this.state.lfCnum53}>Y</span>
-                    <span className={"lf-" + this.state.lfCnum54}>O</span>
-                    <span className={"lf-" + this.state.lfCnum55}>U</span>
-                    <span className={"lf-" + this.state.lfCnum56}>T</span>
-                  </span>
-                  <span className="word">
-                    <span className={"lf-" + this.state.lfCnum49}>I</span>
-                    <span className={"lf-" + this.state.lfCnum50}>N</span>
-                    <span className={"lf-" + this.state.lfCnum51}>T</span>
-                    <span className={"lf-" + this.state.lfCnum52}>E</span>
-                    <span className={"lf-" + this.state.lfCnum53}>R</span>
-                    <span className={"lf-" + this.state.lfCnum54}>F</span>
-                    <span className={"lf-" + this.state.lfCnum55}>A</span>
-                    <span className={"lf-" + this.state.lfCnum56}>C</span>
-                    <span className={"lf-" + this.state.lfCnum57}>E</span>
-                  </span>
-                  <span className="word">
-                    <span className={"lf-" + this.state.lfCnum58}>C</span>
-                    <span className={"lf-" + this.state.lfCnum59}>A</span>
-                    <span className={"lf-" + this.state.lfCnum60}>M</span>
-                    <span className={"lf-" + this.state.lfCnum61}>E</span>
-                    <span className={"lf-" + this.state.lfCnum62}>R</span>
-                    <span className={"lf-" + this.state.lfCnum63}>O</span>
-                    <span className={"lf-" + this.state.lfCnum64}>N</span>
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div className="left-rear">
-              <div className="left-rear-content">
-                <div className="left-rear-text">
-                  <span className="word">CAMERON</span>
-                  <span className="word">SOFTWARE</span>
-                  <span className="word">UI</span>
-                  <span className="word">DESIGN</span>
-                  <span className="word">HTML</span>
-                  <span className="word">JAVASCRIPT</span>
-                  <span className="word">GRAPHIC</span>
-                  <span className="word">ICONS</span>
-                  <span className="word">CSS</span>
-                  <span className="word">LAYOUT</span>
-                  <span className="word">INTERFACE</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="right-front">
-              <div className="right-front-content">
-                <div className="right-front-text">
-                  <span className="word">
-                    <span className={"rf-" + this.state.rfCnum1}>S</span>
-                    <span className={"rf-" + this.state.rfCnum2}>O</span>
-                    <span className={"rf-" + this.state.rfCnum3}>F</span>
-                    <span className={"rf-" + this.state.rfCnum4}>T</span>
-                    <span className={"rf-" + this.state.rfCnum5}>W</span>
-                    <span className={"rf-" + this.state.rfCnum6}>A</span>
-                    <span className={"rf-" + this.state.rfCnum7}>R</span>
-                    <span className={"rf-" + this.state.rfCnum8}>E</span>
-                  </span>
-                  <span className="word">
-                    <span className={"rf-" + this.state.rfCnum9}>R</span>
-                    <span className={"rf-" + this.state.rfCnum10}>E</span>
-                    <span className={"rf-" + this.state.rfCnum11}>A</span>
-                    <span className={"rf-" + this.state.rfCnum12}>C</span>
-                    <span className={"rf-" + this.state.rfCnum13}>T</span>
-                  </span>
-                  <span className="word">
-                    <span className={"rf-" + this.state.rfCnum14}>U</span>
-                    <span className={"rf-" + this.state.rfCnum15}>S</span>
-                    <span className={"rf-" + this.state.rfCnum16}>E</span>
-                    <span className={"rf-" + this.state.rfCnum1}>R</span>
-                  </span>
-                  <span className="word">
-                    <span className={"rf-" + this.state.rfCnum2}>J</span>
-                    <span className={"rf-" + this.state.rfCnum3}>A</span>
-                    <span className={"rf-" + this.state.rfCnum4}>V</span>
-                    <span className={"rf-" + this.state.rfCnum5}>A</span>
-                    <span className={"rf-" + this.state.rfCnum6}>S</span>
-                    <span className={"rf-" + this.state.rfCnum7}>C</span>
-                    <span className={"rf-" + this.state.rfCnum8}>R</span>
-                    <span className={"rf-" + this.state.rfCnum9}>I</span>
-                    <span className={"rf-" + this.state.rfCnum10}>P</span>
-                    <span className={"rf-" + this.state.rfCnum11}>T</span>
-                  </span>
-                  <span className="word">
-                    <span className={"rf-" + this.state.rfCnum2}>G</span>
-                    <span className={"rf-" + this.state.rfCnum3}>R</span>
-                    <span className={"rf-" + this.state.rfCnum4}>A</span>
-                    <span className={"rf-" + this.state.rfCnum5}>P</span>
-                    <span className={"rf-" + this.state.rfCnum6}>H</span>
-                    <span className={"rf-" + this.state.rfCnum7}>I</span>
-                    <span className={"rf-" + this.state.rfCnum8}>C</span>
-                  </span>
-                  <span className="word">
-                    <span className={"rf-" + this.state.rfCnum9}>I</span>
-                    <span className={"rf-" + this.state.rfCnum10}>C</span>
-                    <span className={"rf-" + this.state.rfCnum11}>O</span>
-                    <span className={"rf-" + this.state.rfCnum12}>N</span>
-                    <span className={"rf-" + this.state.rfCnum13}>S</span>
-                  </span>
-                  <span className="word">
-                    <span className={"rf-" + this.state.rfCnum14}>C</span>
-                    <span className={"rf-" + this.state.rfCnum15}>S</span>
-                    <span className={"rf-" + this.state.rfCnum16}>S</span>
-                  </span>
-                  <span className="word">
-                    <span className={"rf-" + this.state.rfCnum2}>L</span>
-                    <span className={"rf-" + this.state.rfCnum3}>A</span>
-                    <span className={"rf-" + this.state.rfCnum4}>Y</span>
-                    <span className={"rf-" + this.state.rfCnum5}>O</span>
-                    <span className={"rf-" + this.state.rfCnum6}>U</span>
-                    <span className={"rf-" + this.state.rfCnum7}>T</span>
-                  </span>
-                  <span className="word">
-                    <span className={"rf-" + this.state.rfCnum8}>I</span>
-                    <span className={"rf-" + this.state.rfCnum9}>N</span>
-                    <span className={"rf-" + this.state.rfCnum10}>T</span>
-                    <span className={"rf-" + this.state.rfCnum11}>E</span>
-                    <span className={"rf-" + this.state.rfCnum12}>R</span>
-                    <span className={"rf-" + this.state.rfCnum13}>F</span>
-                    <span className={"rf-" + this.state.rfCnum14}>A</span>
-                    <span className={"rf-" + this.state.rfCnum15}>C</span>
-                    <span className={"rf-" + this.state.rfCnum16}>E</span>
-                  </span>
-                  <span className="word">
-                    <span className={"rf-" + this.state.rfCnum1}>C</span>
-                    <span className={"rf-" + this.state.rfCnum2}>A</span>
-                    <span className={"rf-" + this.state.rfCnum3}>M</span>
-                    <span className={"rf-" + this.state.rfCnum4}>E</span>
-                    <span className={"rf-" + this.state.rfCnum5}>R</span>
-                    <span className={"rf-" + this.state.rfCnum6}>O</span>
-                    <span className={"rf-" + this.state.rfCnum7}>N</span>
-                  </span>
-                  <span className="word">
-                    <span className={"rf-" + this.state.rfCnum8}>C</span>
-                    <span className={"rf-" + this.state.rfCnum9}>H</span>
-                    <span className={"rf-" + this.state.rfCnum10}>I</span>
-                    <span className={"rf-" + this.state.rfCnum11}>L</span>
-                    <span className={"rf-" + this.state.rfCnum12}>T</span>
-                    <span className={"rf-" + this.state.rfCnum13}>O</span>
-                    <span className={"rf-" + this.state.rfCnum14}>N</span>
-                  </span>
-                  <span className="word">
-                    <span className={"rf-" + this.state.rfCnum15}>U</span>
-                    <span className={"rf-" + this.state.rfCnum16}>I</span>
-                  </span>
-                  <span className="word">
-                    <span className={"rf-" + this.state.rfCnum1}>U</span>
-                    <span className={"rf-" + this.state.rfCnum2}>X</span>
-                  </span>
-                  <span className="word">
-                    <span className={"rf-" + this.state.rfCnum3}>D</span>
-                    <span className={"rf-" + this.state.rfCnum4}>E</span>
-                    <span className={"rf-" + this.state.rfCnum5}>S</span>
-                    <span className={"rf-" + this.state.rfCnum6}>I</span>
-                    <span className={"rf-" + this.state.rfCnum7}>G</span>
-                    <span className={"rf-" + this.state.rfCnum8}>N</span>
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div className="right-rear">
-              <div className="right-rear-content">
-                <div className="right-rear-text">
-                  <span className="word">ICONS</span>
-                  <span className="word">CSS</span>
-                  <span className="word">LAYOUT</span>
-                  <span className="word">INTERFACE</span>
-                  <span className="word">CAMERON</span>
-                  <span className="word">CHILTON</span>
-                  <span className="word">UI</span>
-                  <span className="word">UX</span>
-                  <span className="word">DESIGN</span>
-                  <span className="word">REACT</span>
-                  <span className="word">CSS</span>
-                  <span className="word">HTML</span>
-                  <span className="word">USER</span>
-                  <span className="word">JAVASCRIPT</span>
-                </div>
-              </div>
-            </div>
-
-            <WorkL1 clickSample={this.clickSample} />
-
-            <WorkL2 clickSample={this.clickSample} />
-
-            <WorkR1 clickSample={this.clickSample} />
-
-            <WorkR2 clickSample={this.clickSample} />
-
-            <WorkInfo
-              workTitle={this.state.workTitle}
-              workImg={this.state.workImg}
-              workDesc={this.state.workDesc}
-              workTech={this.state.workTech}
-              workUrl={this.state.workUrl}
-              workInst={this.state.workInst}
-            />
-
-
           </div>
+
+          <div className="left-front">
+            <div className="left-front-content">
+              <div className="left-front-text">
+                <span className="word">
+                  <span className={"lf-" + this.state.lfCnum56}>S</span>
+                  <span className={"lf-" + this.state.lfCnum55}>O</span>
+                  <span className={"lf-" + this.state.lfCnum54}>F</span>
+                  <span className={"lf-" + this.state.lfCnum53}>T</span>
+                  <span className={"lf-" + this.state.lfCnum49}>W</span>
+                  <span className={"lf-" + this.state.lfCnum50}>A</span>
+                  <span className={"lf-" + this.state.lfCnum51}>R</span>
+                  <span className={"lf-" + this.state.lfCnum52}>E</span>
+                </span>
+                <span className="word">
+                  <span className={"lf-" + this.state.lfCnum53}>R</span>
+                  <span className={"lf-" + this.state.lfCnum54}>E</span>
+                  <span className={"lf-" + this.state.lfCnum55}>A</span>
+                  <span className={"lf-" + this.state.lfCnum56}>C</span>
+                  <span className={"lf-" + this.state.lfCnum57}>T</span>
+                </span>
+                <span className="word">
+                  <span className={"lf-" + this.state.lfCnum58}>U</span>
+                  <span className={"lf-" + this.state.lfCnum59}>S</span>
+                  <span className={"lf-" + this.state.lfCnum60}>E</span>
+                  <span className={"lf-" + this.state.lfCnum61}>R</span>
+                </span>
+                <span className="word">
+                  <span className={"lf-" + this.state.lfCnum49}>J</span>
+                  <span className={"lf-" + this.state.lfCnum50}>A</span>
+                  <span className={"lf-" + this.state.lfCnum51}>V</span>
+                  <span className={"lf-" + this.state.lfCnum52}>A</span>
+                  <span className={"lf-" + this.state.lfCnum53}>S</span>
+                  <span className={"lf-" + this.state.lfCnum54}>C</span>
+                  <span className={"lf-" + this.state.lfCnum55}>R</span>
+                  <span className={"lf-" + this.state.lfCnum56}>I</span>
+                  <span className={"lf-" + this.state.lfCnum57}>P</span>
+                  <span className={"lf-" + this.state.lfCnum58}>T</span>
+                </span>
+                <span className="word">
+                  <span className={"lf-" + this.state.lfCnum53}>G</span>
+                  <span className={"lf-" + this.state.lfCnum54}>R</span>
+                  <span className={"lf-" + this.state.lfCnum55}>A</span>
+                  <span className={"lf-" + this.state.lfCnum56}>P</span>
+                  <span className={"lf-" + this.state.lfCnum57}>H</span>
+                  <span className={"lf-" + this.state.lfCnum58}>I</span>
+                  <span className={"lf-" + this.state.lfCnum59}>C</span>
+                </span>
+                <span className="word">
+                  <span className={"lf-" + this.state.lfCnum64}>I</span>
+                  <span className={"lf-" + this.state.lfCnum63}>C</span>
+                  <span className={"lf-" + this.state.lfCnum62}>O</span>
+                  <span className={"lf-" + this.state.lfCnum61}>N</span>
+                  <span className={"lf-" + this.state.lfCnum60}>S</span>
+                </span>
+                <span className="word">
+                  <span className={"lf-" + this.state.lfCnum60}>C</span>
+                  <span className={"lf-" + this.state.lfCnum59}>S</span>
+                  <span className={"lf-" + this.state.lfCnum58}>S</span>
+                </span>
+                <span className="word">
+                  <span className={"lf-" + this.state.lfCnum51}>L</span>
+                  <span className={"lf-" + this.state.lfCnum52}>A</span>
+                  <span className={"lf-" + this.state.lfCnum53}>Y</span>
+                  <span className={"lf-" + this.state.lfCnum54}>O</span>
+                  <span className={"lf-" + this.state.lfCnum55}>U</span>
+                  <span className={"lf-" + this.state.lfCnum56}>T</span>
+                </span>
+                <span className="word">
+                  <span className={"lf-" + this.state.lfCnum49}>I</span>
+                  <span className={"lf-" + this.state.lfCnum50}>N</span>
+                  <span className={"lf-" + this.state.lfCnum51}>T</span>
+                  <span className={"lf-" + this.state.lfCnum52}>E</span>
+                  <span className={"lf-" + this.state.lfCnum53}>R</span>
+                  <span className={"lf-" + this.state.lfCnum54}>F</span>
+                  <span className={"lf-" + this.state.lfCnum55}>A</span>
+                  <span className={"lf-" + this.state.lfCnum56}>C</span>
+                  <span className={"lf-" + this.state.lfCnum57}>E</span>
+                </span>
+                <span className="word">
+                  <span className={"lf-" + this.state.lfCnum58}>C</span>
+                  <span className={"lf-" + this.state.lfCnum59}>A</span>
+                  <span className={"lf-" + this.state.lfCnum60}>M</span>
+                  <span className={"lf-" + this.state.lfCnum61}>E</span>
+                  <span className={"lf-" + this.state.lfCnum62}>R</span>
+                  <span className={"lf-" + this.state.lfCnum63}>O</span>
+                  <span className={"lf-" + this.state.lfCnum64}>N</span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div className="left-rear">
+            <div className="left-rear-content">
+              <div className="left-rear-text">
+                <span className="word">CAMERON</span>
+                <span className="word">SOFTWARE</span>
+                <span className="word">UI</span>
+                <span className="word">DESIGN</span>
+                <span className="word">HTML</span>
+                <span className="word">JAVASCRIPT</span>
+                <span className="word">GRAPHIC</span>
+                <span className="word">ICONS</span>
+                <span className="word">CSS</span>
+                <span className="word">LAYOUT</span>
+                <span className="word">INTERFACE</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="right-front">
+            <div className="right-front-content">
+              <div className="right-front-text">
+                <span className="word">
+                  <span className={"rf-" + this.state.rfCnum1}>S</span>
+                  <span className={"rf-" + this.state.rfCnum2}>O</span>
+                  <span className={"rf-" + this.state.rfCnum3}>F</span>
+                  <span className={"rf-" + this.state.rfCnum4}>T</span>
+                  <span className={"rf-" + this.state.rfCnum5}>W</span>
+                  <span className={"rf-" + this.state.rfCnum6}>A</span>
+                  <span className={"rf-" + this.state.rfCnum7}>R</span>
+                  <span className={"rf-" + this.state.rfCnum8}>E</span>
+                </span>
+                <span className="word">
+                  <span className={"rf-" + this.state.rfCnum9}>R</span>
+                  <span className={"rf-" + this.state.rfCnum10}>E</span>
+                  <span className={"rf-" + this.state.rfCnum11}>A</span>
+                  <span className={"rf-" + this.state.rfCnum12}>C</span>
+                  <span className={"rf-" + this.state.rfCnum13}>T</span>
+                </span>
+                <span className="word">
+                  <span className={"rf-" + this.state.rfCnum14}>U</span>
+                  <span className={"rf-" + this.state.rfCnum15}>S</span>
+                  <span className={"rf-" + this.state.rfCnum16}>E</span>
+                  <span className={"rf-" + this.state.rfCnum1}>R</span>
+                </span>
+                <span className="word">
+                  <span className={"rf-" + this.state.rfCnum2}>J</span>
+                  <span className={"rf-" + this.state.rfCnum3}>A</span>
+                  <span className={"rf-" + this.state.rfCnum4}>V</span>
+                  <span className={"rf-" + this.state.rfCnum5}>A</span>
+                  <span className={"rf-" + this.state.rfCnum6}>S</span>
+                  <span className={"rf-" + this.state.rfCnum7}>C</span>
+                  <span className={"rf-" + this.state.rfCnum8}>R</span>
+                  <span className={"rf-" + this.state.rfCnum9}>I</span>
+                  <span className={"rf-" + this.state.rfCnum10}>P</span>
+                  <span className={"rf-" + this.state.rfCnum11}>T</span>
+                </span>
+                <span className="word">
+                  <span className={"rf-" + this.state.rfCnum2}>G</span>
+                  <span className={"rf-" + this.state.rfCnum3}>R</span>
+                  <span className={"rf-" + this.state.rfCnum4}>A</span>
+                  <span className={"rf-" + this.state.rfCnum5}>P</span>
+                  <span className={"rf-" + this.state.rfCnum6}>H</span>
+                  <span className={"rf-" + this.state.rfCnum7}>I</span>
+                  <span className={"rf-" + this.state.rfCnum8}>C</span>
+                </span>
+                <span className="word">
+                  <span className={"rf-" + this.state.rfCnum9}>I</span>
+                  <span className={"rf-" + this.state.rfCnum10}>C</span>
+                  <span className={"rf-" + this.state.rfCnum11}>O</span>
+                  <span className={"rf-" + this.state.rfCnum12}>N</span>
+                  <span className={"rf-" + this.state.rfCnum13}>S</span>
+                </span>
+                <span className="word">
+                  <span className={"rf-" + this.state.rfCnum14}>C</span>
+                  <span className={"rf-" + this.state.rfCnum15}>S</span>
+                  <span className={"rf-" + this.state.rfCnum16}>S</span>
+                </span>
+                <span className="word">
+                  <span className={"rf-" + this.state.rfCnum2}>L</span>
+                  <span className={"rf-" + this.state.rfCnum3}>A</span>
+                  <span className={"rf-" + this.state.rfCnum4}>Y</span>
+                  <span className={"rf-" + this.state.rfCnum5}>O</span>
+                  <span className={"rf-" + this.state.rfCnum6}>U</span>
+                  <span className={"rf-" + this.state.rfCnum7}>T</span>
+                </span>
+                <span className="word">
+                  <span className={"rf-" + this.state.rfCnum8}>I</span>
+                  <span className={"rf-" + this.state.rfCnum9}>N</span>
+                  <span className={"rf-" + this.state.rfCnum10}>T</span>
+                  <span className={"rf-" + this.state.rfCnum11}>E</span>
+                  <span className={"rf-" + this.state.rfCnum12}>R</span>
+                  <span className={"rf-" + this.state.rfCnum13}>F</span>
+                  <span className={"rf-" + this.state.rfCnum14}>A</span>
+                  <span className={"rf-" + this.state.rfCnum15}>C</span>
+                  <span className={"rf-" + this.state.rfCnum16}>E</span>
+                </span>
+                <span className="word">
+                  <span className={"rf-" + this.state.rfCnum1}>C</span>
+                  <span className={"rf-" + this.state.rfCnum2}>A</span>
+                  <span className={"rf-" + this.state.rfCnum3}>M</span>
+                  <span className={"rf-" + this.state.rfCnum4}>E</span>
+                  <span className={"rf-" + this.state.rfCnum5}>R</span>
+                  <span className={"rf-" + this.state.rfCnum6}>O</span>
+                  <span className={"rf-" + this.state.rfCnum7}>N</span>
+                </span>
+                <span className="word">
+                  <span className={"rf-" + this.state.rfCnum8}>C</span>
+                  <span className={"rf-" + this.state.rfCnum9}>H</span>
+                  <span className={"rf-" + this.state.rfCnum10}>I</span>
+                  <span className={"rf-" + this.state.rfCnum11}>L</span>
+                  <span className={"rf-" + this.state.rfCnum12}>T</span>
+                  <span className={"rf-" + this.state.rfCnum13}>O</span>
+                  <span className={"rf-" + this.state.rfCnum14}>N</span>
+                </span>
+                <span className="word">
+                  <span className={"rf-" + this.state.rfCnum15}>U</span>
+                  <span className={"rf-" + this.state.rfCnum16}>I</span>
+                </span>
+                <span className="word">
+                  <span className={"rf-" + this.state.rfCnum1}>U</span>
+                  <span className={"rf-" + this.state.rfCnum2}>X</span>
+                </span>
+                <span className="word">
+                  <span className={"rf-" + this.state.rfCnum3}>D</span>
+                  <span className={"rf-" + this.state.rfCnum4}>E</span>
+                  <span className={"rf-" + this.state.rfCnum5}>S</span>
+                  <span className={"rf-" + this.state.rfCnum6}>I</span>
+                  <span className={"rf-" + this.state.rfCnum7}>G</span>
+                  <span className={"rf-" + this.state.rfCnum8}>N</span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div className="right-rear">
+            <div className="right-rear-content">
+              <div className="right-rear-text">
+                <span className="word">ICONS</span>
+                <span className="word">CSS</span>
+                <span className="word">LAYOUT</span>
+                <span className="word">INTERFACE</span>
+                <span className="word">CAMERON</span>
+                <span className="word">CHILTON</span>
+                <span className="word">UI</span>
+                <span className="word">UX</span>
+                <span className="word">DESIGN</span>
+                <span className="word">REACT</span>
+                <span className="word">CSS</span>
+                <span className="word">HTML</span>
+                <span className="word">USER</span>
+                <span className="word">JAVASCRIPT</span>
+              </div>
+            </div>
+          </div>
+
+          <WorkL1 clickSample={this.clickSample} />
+
+          <WorkL2 clickSample={this.clickSample} />
+
+          <WorkR1 clickSample={this.clickSample} />
+
+          <WorkR2 clickSample={this.clickSample} />
+
+          <WorkInfo
+            workTitle={this.state.workTitle}
+            workImg={this.state.workImg}
+            workDesc={this.state.workDesc}
+            workTech={this.state.workTech}
+            workUrl={this.state.workUrl}
+            workInst={this.state.workInst}
+            workId={this.state.workId}
+          />
+
+        </div>
 
         <Modal
           isOpen={modal.isModalOpen}
@@ -420,9 +478,15 @@ class HomePage extends Component {
           workImg={modal.workImg}
           workUrl={modal.workUrl}
           workInst={modal.workInst}
+          workId={modal.workId}
           closeModal={closeModal}
           onClose={modal.onClose}
           options={modal.options}
+          workNext={this.workNext}
+          hideNext={modal.hideNext}
+          workPrev={this.workPrev}
+          hidePrev={modal.hidePrev}
+          updateModal={updateModal}
         />
 
       </>
@@ -437,9 +501,16 @@ HomePage.propTypes = {
   workTech: string,
   workUrl: string,
   workInst: string,
+  workId: string,
+  workNext: func,
+  hideNext: bool,
+  workPrev: func,
+  hidePrev: bool,
   // Redux state
   modal: object,
+  // Dispatch functions
   closeModal: func,
+  updateModal: func,
 };
 
 const mapStateToProps = (state) => ({
@@ -448,5 +519,6 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, {
     closeModal,
+    updateModal,
   }
 )(HomePage);

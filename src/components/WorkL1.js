@@ -101,7 +101,7 @@ class WorkL1 extends Component {
       <div className="workL1">
         <div className={this.state.workL1img !== null ? `contentL1` : 'contentNONE'}>
           <div>
-            {this.state.workL1img && <img src={this.state.workL1img} onClick={ () => {this.props.clickSample(this.state.workL1Info);} } />}
+            {this.state.workL1img && <img src={this.state.workL1img} onClick={ () => {this.props.clickSample(this.state.workL1Info)} } />}
           </div>
         </div>
       </div>

@@ -6,6 +6,7 @@ export default {
     workImg: "",
     workUrl: "",
     workInst: "",
+    workId: "",
     isModalOpen: false,
     options: {},
   },

@@ -1,6 +1,7 @@
 import {
   OPEN_MODAL,
   CLOSE_MODAL,
+  UPDATE_MODAL
 } from "../constants/actionTypes";
 
 /**
@@ -12,6 +13,13 @@ import {
 export const openModal = (modalInfo) => {
   return (dispatch) => {
     dispatch({ type: OPEN_MODAL, modalInfo });
+  };
+};
+
+// update modal with new info
+export const updateModal = (modalInfo) => {
+  return (dispatch) => {
+    dispatch({ type: UPDATE_MODAL, modalInfo });
   };
 };
 

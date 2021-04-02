@@ -10,6 +10,11 @@ const Modal = ({
   workTech,
   workUrl,
   workInst,
+  workId,
+  workNext,
+  hideNext,
+  workPrev,
+  hidePrev,
   closeModal,
   onClose,
   options,
@@ -54,6 +59,8 @@ const Modal = ({
       <div className="modal-img">
         <img src={workImg} />
       </div>
+      {!hideNext ? <div className="modal-next-btn" onClick={ () => { workNext(workId) } }></div> : ''}
+      {!hidePrev ? <div className="modal-prev-btn" onClick={ () => { workPrev(workId) } }></div> : ''}
 
     </ReactAriaModalWrapper>
   );
@@ -67,7 +74,13 @@ Modal.propTypes = {
   workUrl: string,
   workTech: string,
   workInst: string,
+  workId: string,
   closeModal: func,
+  workNext: func,
+  hideNext: bool,
+  workPrev: func,
+  hidePrev: bool,
+  updateModal: func,
   onClose: func,
   options: object,
 };

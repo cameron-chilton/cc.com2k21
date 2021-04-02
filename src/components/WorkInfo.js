@@ -10,14 +10,15 @@ export const WorkInfo = ({
     workDesc,
     workTech,
     workUrl,
-    workInst
+    workInst,
+    workId,
   }) => {
 
     const openSample = (url) => {
       window.open(url);
     };
 
-    const showModal = (workTitle, workDesc, workTech, workImg) => {
+    const showModal = (workTitle, workDesc, workTech, workImg, workInst, workId, workUrl) => {
       const modalInfo = {
         header: workTitle,
         bodyMsg: workDesc,
@@ -25,6 +26,7 @@ export const WorkInfo = ({
         workImg: workImg,
         workUrl: workUrl,
         workInst: workInst,
+        workId: workId,
         onClose: () => {
           closeModal();
         },
@@ -52,7 +54,7 @@ export const WorkInfo = ({
         <div className="workInfo">
           <div className="posDiv">
             <div className="workImg">
-              {workImg !== '' ? <img src={workImg} title="Click for larger image" onClick={ () => {showModal(workTitle, workDesc, workTech, workImg, workInst, workUrl)} } /> : ''}
+              {workImg !== '' ? <img src={workImg} title="Click for larger image" onClick={ () => {showModal(workTitle, workDesc, workTech, workImg, workInst, workId, workUrl)} } /> : ''}
             </div>
             {
               workImg && <img src="../imgs/hand-icon.svg" className="handIcon" />
@@ -71,6 +73,7 @@ WorkInfo.propTypes = {
   workTech: string,
   workUrl: string,
   workInst: string,
+  workId: string,
   showModal: func,
   // Dispatch Functions
   openModal: func,

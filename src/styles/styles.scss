@@ -517,13 +517,15 @@ body {
 
 .modal-container {
   height: auto;
-  min-width: 32rem;
+  min-width: 46rem;
+  min-height: 40rem;
   background-color: white;
   padding: 0.48rem 0.48rem 0 0.48rem;
   margin: 0 auto;
   box-shadow: 0px 0px 24px $gray100;
   text-align: center;
   z-index: 999;
+  position: relative;
 
   .modal-header {
     display: flex;
@@ -557,6 +559,86 @@ body {
   }
 
   .modal-img { margin: 0.48rem 0 0 0;}
+
+  .modal-next-btn {
+    height: 3em;
+    width: 3em;
+    position: absolute;
+    display: block;
+    right: -3.5rem;
+    top: 43%;
+    cursor: pointer;
+  }
+  .modal-next-btn:active:before, .modal-next-btn:active:after {
+    background: $yellow2;
+  }
+  .modal-next-btn::before, .modal-next-btn::after {
+    height: 3em;
+    width: 0.4em;
+    background: #fff;
+    content: "";
+    position: absolute;
+  }
+  .modal-next-btn::before {
+    top: 1.9em;
+    right: .9em;
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    transform: rotate(45deg);
+    box-shadow: 0px 0px 6px black;
+  }
+  .modal-next-btn::after {
+    top: 0em;
+    right: .9em;
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    box-shadow: 0px 0px 6px black;
+  }
+
+  .modal-prev-btn {
+    height: 3em;
+    width: 3em;
+    position: absolute;
+    display: block;
+    left: -4.5rem;
+    top: 43%;
+    cursor: pointer;
+  }
+  .modal-prev-btn:active:before, .modal-prev-btn:active:after {
+    background: $yellow2;
+  }
+  .modal-prev-btn::before, .modal-prev-btn::after {
+    height: 3em;
+    width: 0.4em;
+    background: #fff;
+    content: "";
+    position: absolute;
+  }
+  .modal-prev-btn::before {
+    top: 1.84em;
+    right: .9em;
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    box-shadow: 0px 0px 6px black;
+  }
+  .modal-prev-btn::after {
+    top: 0em;
+    right: .9em;
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    transform: rotate(45deg);
+    box-shadow: 0px 0px 6px black;
+  }
 
 }
 

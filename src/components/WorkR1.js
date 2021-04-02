@@ -38,24 +38,6 @@ class WorkR1 extends Component {
   fetchWorkData = () => {
 
     const url = 'http://localhost/php/getRandom.php';
-    setTimeout( () => {
-      fetch(url)
-        .then(response => response.json())
-        .then(data => this.setState({work1data: data}));
-        this.setState({newSampleUp: true});
-    }, 10);
-    setInterval( () => {
-      fetch(url)
-        .then(response => response.json())
-        .then(data => this.setState({work1data: data}));
-        this.setState({newSampleUp: true});
-    }, 15400);
-
-  }
-
-  fetchWorkData = () => {
-
-    const url = 'http://localhost/php/getRandom.php';
 
     setInterval( () => {
       fetch(url)
