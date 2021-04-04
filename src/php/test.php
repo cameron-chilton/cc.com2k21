@@ -2,6 +2,8 @@
 
     echo "Connected successfully";
 
+    phpinfo();
+
 
 
 ?>

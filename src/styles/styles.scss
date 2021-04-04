@@ -70,7 +70,7 @@ body {
 
 .left-front {
 	position: absolute;
-  z-index: 2;
+  z-index: 3;
 	width: 23.4rem;
 	height: 6rem;
 	top: 22.4rem;
@@ -154,7 +154,7 @@ body {
 
 .right-front {
 	position: absolute;
-  z-index: 2;
+  z-index: 3;
 	width: 45.9rem;
 	height: 8.1rem;
 	top: 19.0rem;
@@ -243,7 +243,7 @@ body {
   position: absolute;
   bottom: 4.24rem;
   right: 15.60rem;
-  z-index: 999;
+  z-index: 9;
 }
 
 .workButton {
@@ -272,7 +272,7 @@ body {
   bottom: 0.90rem;
   text-align: right;
   right: 15.60rem;
-  z-index: 999;
+  z-index: 9;
   text-transform: uppercase;
 
   .workTitle {font-weight: 700; font-size: 0.84rem; letter-spacing: 0.060rem; color: $gray70; line-height: 1.02rem;}
@@ -285,7 +285,7 @@ body {
   position: absolute;
   right: 0.96rem;
   bottom: 0.96rem;
-  z-index: 999;
+  z-index: 9;
 
   .posDiv {
     position: relative;
@@ -323,7 +323,7 @@ body {
 
 .workL1 {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
 	width: 12rem;
 	height: 49rem;
 	top: 0;
@@ -371,7 +371,7 @@ body {
 
 .workL2 {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
 	width: 10.0rem;
 	height: 49rem;
 	top: 0;
@@ -418,7 +418,7 @@ body {
 
 .workR1 {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
 	width: 13rem;
 	height: 49rem;
 	top: 0;
@@ -464,7 +464,7 @@ body {
 
 .workR2 {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
 	width: 11rem;
 	height: 49rem;
 	top: 0;
@@ -515,6 +515,8 @@ body {
 
 /* modal styles */
 
+#react-modal-aria-dialog {z-index: 999;}
+
 .modal-container {
   height: auto;
   min-width: 46rem;
@@ -524,7 +526,7 @@ body {
   margin: 0 auto;
   box-shadow: 0px 0px 24px $gray100;
   text-align: center;
-  z-index: 999;
+  z-index: 99999;
   position: relative;
 
   .modal-header {
@@ -599,7 +601,6 @@ body {
     transform: rotate(-45deg);
     box-shadow: 0px 0px 6px black;
   }
-
   .modal-prev-btn {
     height: 3em;
     width: 3em;

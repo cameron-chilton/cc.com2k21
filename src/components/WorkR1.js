@@ -18,7 +18,7 @@ class WorkR1 extends Component {
   }
 
   componentDidMount() {
-    const url = 'http://localhost/php/getRandom.php';
+    const url = 'http://cameronchilton.com/php/getRandom.php';
     setTimeout( () => {
       fetch(url)
         .then(response => response.json())
@@ -37,7 +37,7 @@ class WorkR1 extends Component {
 
   fetchWorkData = () => {
 
-    const url = 'http://localhost/php/getRandom.php';
+    const url = 'http://cameronchilton.com/php/getRandom.php';
 
     setInterval( () => {
       fetch(url)

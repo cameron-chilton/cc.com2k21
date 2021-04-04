@@ -136,7 +136,7 @@ class HomePage extends Component {
   }
 
   workNext = (id) => {
-    const url = `http://localhost/php/getNext.php?currentID=${id}`;
+    const url = `http://cameronchilton.com/php/getNext.php?currentID=${id}`;
     fetch(url)
       .then(response => response.json())
       .then(data => this.setState({nextSample: data}));
@@ -144,7 +144,7 @@ class HomePage extends Component {
   };
 
   workPrev = (id) => {
-    const url = `http://localhost/php/getPrev.php?currentID=${id}`;
+    const url = `http://cameronchilton.com/php/getPrev.php?currentID=${id}`;
     fetch(url)
       .then(response => response.json())
       .then(data => this.setState({nextSample: data}));
