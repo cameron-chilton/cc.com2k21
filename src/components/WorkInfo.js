@@ -39,6 +39,10 @@ export const WorkInfo = ({
       openModal(modalInfo);
     };
 
+    const createMarkup = () => {
+      return {__html: '&#8595 CLICK TO ENLARGE'};
+    };
+
     return (
       <>
         <div className="workLink">
@@ -49,10 +53,13 @@ export const WorkInfo = ({
         <div className="workText">
           <div className="workTitle">{workTitle}</div>
           <div className="workDesc">{workDesc}</div>
-          <div className="workTech">{workTech !== '' ? workTech : 'SELECT SAMPLES FOR MORE INFORMATION'}</div>
+          <div className="workTech">{workImg !== '' ? workTech : 'SELECT SAMPLES FOR MORE INFORMATION'}</div>
         </div>
         <div className="workInfo">
           <div className="posDiv">
+            { workImg !== '' &&
+              <div className="clickInst" dangerouslySetInnerHTML={createMarkup()}></div>
+            }
             <div className="workImg">
               {workImg !== '' ? <img src={workImg} title="Click for larger image" onClick={ () => {showModal(workTitle, workDesc, workTech, workImg, workInst, workId, workUrl)} } /> : ''}
             </div>
