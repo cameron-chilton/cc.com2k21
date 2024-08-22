@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {string, func, object, bool} from 'prop-types';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 import WorkL1 from './WorkL1';
 import WorkL2 from './WorkL2';
 import WorkR1 from './WorkR1';
@@ -8,7 +8,7 @@ import WorkR2 from './WorkR2';
 // eslint-disable-next-line import/no-named-as-default
 import WorkInfo from './WorkInfo';
 import Modal from '../modal/Modal';
-import {closeModal, updateModal} from "../actions/modalActions";
+import {closeModal, updateModal} from '../actions/modalActions';
 
 class HomePage extends Component {
 
@@ -225,7 +225,7 @@ class HomePage extends Component {
               </div>
             </div>
           </div>
-          
+
           <div className="left-front">
             <div className="left-front-content">
               <div className="left-front-text">
